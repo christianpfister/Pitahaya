@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>List Manager</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+	<h1>List Manager</h1>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Menge</th>
+		</tr>
+		<tr th:each="item : ${list}">
+			<td th:text="${item.getName()}">Ding 1</td>
+			<td th:text="${item.getQuantity()}">99</td>
+			<td><a href="" th:href="${'/item?id=' + item.getId()}">bearbeiten</a></td>
+			<td><a href="" th:href="${'/item/delete?id=' + item.getId()}">löschen</a></td>
+
+		</tr>
+	</table>
+
+	<a href="/item">neues Item erstellen</a>
+
+</body>
+</html>
