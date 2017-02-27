@@ -3,7 +3,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>List Manager</title>
+	
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" type="text/css" media="all" href="bootstrap/css/bootstrap.min.css" />
 	
 
 </head>
@@ -12,7 +16,7 @@
 	<h1>Hallo Marino, schön möchtisch du mini Liste fülle</h1>
 	<table>
 		<tr>
-			<th><h1>Name</h1></th>
+			<th>Name</th>
 			<th>Menge</th>
 		</tr>
 		<tr th:each="item : ${list}">
@@ -24,10 +28,12 @@
 		</tr>
 	</table>
 
-	<a href="/item">neues Item erstellen</a>
+	<a href="/item" class="btn btn-default">neues Item erstellen</a>
 	
-	
-	
+   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>	
 
 </body>
 </html>
