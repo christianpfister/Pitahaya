@@ -13,7 +13,7 @@
 </head>
 
 <body>
-	<h1>Hallo Marino, schön möchtisch du mini Liste fülle</h1>
+	<h1>ListManager</h1>
 	<table>
 		<tr>
 			<th>Name</th>
@@ -22,8 +22,8 @@
 		<tr th:each="item : ${list}">
 			<td th:text="${item.getName()}">Ding 1</td>
 			<td th:text="${item.getQuantity()}">99</td>
-			<td><a href="" th:href="${'/item?id=' + item.getId()}">bearbeiten</a></td>
-			<td><a href="" th:href="${'/item/delete?id=' + item.getId()}">löschen</a></td>
+			<td><a href="" th:href="${'/item?id=' + item.getId()}" class="btn btn-default">bearbeiten <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a></td>
+			<td><a href="" th:href="${'/item/delete?id=' + item.getId()}" class="btn btn-default">löschen <span class="glyphicon glyphicon-erase" aria-hidden="true"></span></a></td>
 
 		</tr>
 	</table>
