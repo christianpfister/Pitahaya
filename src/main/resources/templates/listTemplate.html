@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html data-ng-app="demo" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>List Manager</title>
 	
@@ -8,12 +8,16 @@
 	
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" type="text/css" media="all" href="bootstrap/css/bootstrap.min.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    	<script src="hello.js"></script>
 	
+
+
 
 </head>
 
 <body>
-	<h1>Hallo Marino, schön möchtisch du mini Liste fülle</h1>
+	<h1>Hallo</h1>
 	<table>
 		<tr>
 			<th>Name</th>
@@ -28,12 +32,42 @@
 		</tr>
 	</table>
 
+  	
+
+<h1>Hide the DIV: <input type="checkbox" data-ng-model="myCheck"/></h1>
+
+<div data-ng-controller="hello"   data-ng-show="myCheck">
+
+	<table class="table">
+  
+   
+ 
+  <tr data-ng-repeat="greeting in greeting | filter:search">
+    <td>{{greeting.id}}</td>
+    <td>{{greeting.name}}</td>
+    <td>{{greeting.quantity}}</td>
+  </tr>
+</table>
+
+
+
+
+</div>
+
+
+
+
 	<a href="/item" class="btn btn-default">neues Item erstellen</a>
 	
+
+
    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>	
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    
+    
+
 
 </body>
 </html>

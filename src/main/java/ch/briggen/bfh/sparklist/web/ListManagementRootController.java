@@ -38,6 +38,7 @@ public class ListManagementRootController implements TemplateViewRoute {
 		//Das Template muss dann auch den Namen "list" verwenden.
 		HashMap<String, Collection<Item>> model = new HashMap<String, Collection<Item>>();
 		model.put("list", repository.getAll());
+		
 		return new ModelAndView(model, "listTemplate");
 	}
 }
