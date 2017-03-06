@@ -1,3 +1,5 @@
+DROP SCHEMA PUBLIC CASCADE
+;
 create table projekt(
 	idProjekt int primary key,
 )
@@ -28,9 +30,9 @@ idPerson int primary key,
 Name varchar(45) not null,
 Vorname varchar(45) not null,
 Strasse varchar(45) not null,
-Strassen_Nr varchar(45) not null,
+Strassen_Nr int not null,
 Wohnort varchar(45) not null,
-Wohnort_PLZ varchar(45) not null,
+Wohnort_PLZ int not null,
 idFunktion varchar(45) not null,
 idAbteilung varchar(45),
 )
@@ -99,3 +101,57 @@ ON pro.idprojekt = det.idprojekt
 
 JOIN projektstatus stat
 ON det.idprojektstatus = stat.idprojektstatus
+;
+CREATE VIEW projekt_team AS
+SELECT
+pro.idprojekt
+,det.idprojektteam
+,det.idperson
+,det.idrolle
+,det.name
+,det.vorname
+,det.strasse
+,det.strassen_nr
+,det.wohnort
+,det.wohnort_plz
+,det.idfunktion
+,det.idabteilung
+FROM
+projekt pro
+
+JOIN projektteam tm
+ON pro.idprojekt = tm.idprojekt
+
+JOIN person pers
+ON tm.idprojektteam = pers.idprojektteam
+
+JOIN rollen rol
+ON tm.idprojektteam = rol.idprojektteam
+;
+CREATE VIEW stakeholder AS
+SELECT
+pro.idprojekt
+,det.idstakeholder
+,det.idperson
+,det.idrolle
+,det.name
+,det.vorname
+,det.strasse
+,det.strassen_nr
+,det.wohnort
+,det.wohnort_plz
+,det.idfunktion
+,det.idabteilung
+,det.rolle_desc
+FROM
+projekt pro
+
+JOIN stakeholder stak
+ON pro.idprojekt = stak.idprojekt
+
+JOIN rollen rol
+ON stak.idstakeholder = rol.idstakeholder
+
+JOIN person pers
+ON stak.idstakeholder = pers.idstakeholder
+;

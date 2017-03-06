@@ -67,7 +67,11 @@ public class ProjektRepository {
 			throw new RepositoryException(msg);
 		}
 	}
-	
+	/**
+	 * 
+	 * @param i ist ein Objekt Projekt
+	 * @return id des Projekts
+	 */
 	public int insert(Projekt i){
 		log.trace("insert" + i);
 		int id = 0;

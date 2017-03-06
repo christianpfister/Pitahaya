@@ -14,6 +14,8 @@ import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 import spark.TemplateViewRoute;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 
 /**
  * WWW-Controller
@@ -33,14 +35,13 @@ public class ProjektManagementRootController implements TemplateViewRoute {
 	/**
 	 *Liefert die Liste als Root-Seite "/" zurück 
 	 */	
-	@Override
 	public ModelAndView handle(Request request, Response response) throws Exception {
 		
-		//Items werden geladen und die Collection dann für das Template unter dem namen "list" bereitgestellt
-		//Das Template muss dann auch den Namen "list" verwenden.
+		//Projekte werden geladen und die Collection dann für das Template unter dem namen "projekt" bereitgestellt
+		//Das Template muss dann auch den Namen "projekt" verwenden.
 		HashMap<String, Collection<Projekt>> model = new HashMap<String, Collection<Projekt>>();
 		model.put("projekt", repository.getAll());
-		
-		return new ModelAndView(model, "projektTemplate");
+		Gson gson = new Gson();
+		return new ModelAndView(model, "projektOverview");
 	}
 }

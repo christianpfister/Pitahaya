@@ -34,6 +34,12 @@ public class Projekt {
 		this.Projektstatus_DESC = projektstatus_DESC;
 	}
 
+	public Projekt(String Projekt_TTITLE, String Projekt_DESC, String Projektstatus_DESC) {
+		this.Projekt_TITLE = Projekt_TITLE;
+		this.Projekt_DESC = Projekt_DESC;
+		this.Projektstatus_DESC = Projektstatus_DESC;
+	}
+
 	public int getIdProjekt() {
 		return idProjekt;
 	}
