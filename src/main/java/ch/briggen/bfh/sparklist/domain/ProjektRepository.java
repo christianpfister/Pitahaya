@@ -55,7 +55,7 @@ public class ProjektRepository {
 		log.trace("getById" + id);
 		try(Connection conn = getConnection())
 		{
-			PreparedStatement stmt = conn.prepareStatement("select * from projekt_overview where id=?");
+			PreparedStatement stmt = conn.prepareStatement("select * from projekt_overview where idProjekt=?");
 			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery();
 			return mapProjekt(rs).iterator().next();		
