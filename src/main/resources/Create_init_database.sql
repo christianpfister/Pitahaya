@@ -1,3 +1,5 @@
+DROP SCHEMA PUBLIC CASCADE
+;
 create table projekt(
 	idProjekt int primary key,
 )

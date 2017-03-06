@@ -41,23 +41,16 @@ public class SparkListServer extends H2SparkApp {
 
     @Override
 	protected void doConfigureHttpHandlers() {
-    	get("/", new ListManagementRootController(), new ThymeleafTemplateEngine());
-    	get("/item", new ItemEditController(), new ThymeleafTemplateEngine());
-    	post("/item/update", new ItemUpdateController(), new ThymeleafTemplateEngine());
-    	get("/item/delete", new ItemDeleteController(), new ThymeleafTemplateEngine());
-    	post("/item/new", new ItemNewController(), new ThymeleafTemplateEngine());
-
-
-    	get("/projekt", new ProjektManagementRootController(), new ThymeleafTemplateEngine());
     	
-    	ProjektRepository repository = new ProjektRepository();
-    	HashMap<String, Collection<Projekt>> model = new HashMap<String, Collection<Projekt>>();
-		
     	Gson gson = new Gson();
-    	get("/hello", (request, response) -> model.put("list", repository.getAll()), gson::toJson);
+    	HashMap<String, Collection<Projekt>> model = new HashMap<String, Collection<Projekt>>();
+    	//Beispiel aus Sparklist
+    	//get("/", new ListManagementRootController(), new ThymeleafTemplateEngine());
     	
-    	get("/hello",(request,response) -> new ProjektManagementRootController(), gson::toJson);
-	
+    	get("/hello", (request, response) -> model.put("list", new ProjektRepository().getAll()), gson::toJson);
+    	post("/add", new ProjektManagementRootController(), new ThymeleafTemplateEngine());
+    	post();
+    	
         get("/th", new GetNameController(), new ThymeleafTemplateEngine());
         post("/th", new DbSchemaListController(), new ThymeleafTemplateEngine());		
 	}

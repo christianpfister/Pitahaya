@@ -6,6 +6,8 @@ import java.util.HashMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.gson.Gson;
+
 import ch.briggen.bfh.sparklist.domain.Item;
 import ch.briggen.bfh.sparklist.domain.ItemRepository;
 import spark.ModelAndView;
@@ -22,7 +24,7 @@ import spark.TemplateViewRoute;
  * @author M. Briggen
  *
  */
-public class ListManagementRootController implements TemplateViewRoute {
+public class ListManagementRootController {
 	
 	private final Logger log = LoggerFactory.getLogger(ListManagementRootController.class);
 
@@ -31,14 +33,15 @@ public class ListManagementRootController implements TemplateViewRoute {
 	/**
 	 *Liefert die Liste als Root-Seite "/" zurück 
 	 */	
-	@Override
-	public ModelAndView handle(Request request, Response response) throws Exception {
+
+	public HashMap model() {
 		
 		//Items werden geladen und die Collection dann für das Template unter dem namen "list" bereitgestellt
 		//Das Template muss dann auch den Namen "list" verwenden.
+
 		HashMap<String, Collection<Item>> model = new HashMap<String, Collection<Item>>();
 		model.put("list", repository.getAll());
 		
-		return new ModelAndView(model, "listTemplate");
+		return model;
 	}
 }
