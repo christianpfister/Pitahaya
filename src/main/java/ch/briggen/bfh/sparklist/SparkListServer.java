@@ -3,10 +3,14 @@ package ch.briggen.bfh.sparklist;
 import static spark.Spark.get;
 import static spark.Spark.post;
 
+import java.util.Collection;
+import java.util.HashMap;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import ch.briggen.bfh.sparklist.domain.Item;
+import ch.briggen.bfh.sparklist.domain.ItemRepository;
 import ch.briggen.bfh.sparklist.web.DbSchemaListController;
 import ch.briggen.bfh.sparklist.web.GetNameController;
 import ch.briggen.bfh.sparklist.web.ItemDeleteController;
@@ -17,6 +21,8 @@ import ch.briggen.bfh.sparklist.web.ListManagementRootController;
 import ch.briggen.bfh.sparklist.web.StartScreenController;
 import ch.briggen.sparkbase.H2SparkApp;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
+import com.google.gson.Gson;
+
 
 public class SparkListServer extends H2SparkApp {
 
@@ -37,11 +43,19 @@ public class SparkListServer extends H2SparkApp {
     	post("/item/update", new ItemUpdateController(), new ThymeleafTemplateEngine());
     	get("/item/delete", new ItemDeleteController(), new ThymeleafTemplateEngine());
     	post("/item/new", new ItemNewController(), new ThymeleafTemplateEngine());
+<<<<<<< HEAD
+=======
     	
     	get("/start", new StartScreenController(), new ThymeleafTemplateEngine());
+>>>>>>> branch 'master' of https://gitlab.com/GRP-TOSEFS17-LITSCHI/PRJ-TOSEFS17-LITSCHI.git
     	
     	
-		get("/hello", (req, res) -> "Hello World");
+    	ItemRepository repository = new ItemRepository();
+    	HashMap<String, Collection<Item>> model = new HashMap<String, Collection<Item>>();
+		
+    	Gson gson = new Gson();
+    	get("/hello", (request, response) -> model.put("list", repository.getAll()), gson::toJson);
+	
         get("/th", new GetNameController(), new ThymeleafTemplateEngine());
         post("/th", new DbSchemaListController(), new ThymeleafTemplateEngine());		
 	}
