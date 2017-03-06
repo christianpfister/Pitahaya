@@ -101,3 +101,57 @@ ON pro.idprojekt = det.idprojekt
 
 JOIN projektstatus stat
 ON det.idprojektstatus = stat.idprojektstatus
+;
+CREATE VIEW projekt_team AS
+SELECT
+pro.idprojekt
+,det.idprojektteam
+,det.idperson
+,det.idrolle
+,det.name
+,det.vorname
+,det.strasse
+,det.strassen_nr
+,det.wohnort
+,det.wohnort_plz
+,det.idfunktion
+,det.idabteilung
+FROM
+projekt pro
+
+JOIN projektteam tm
+ON pro.idprojekt = tm.idprojekt
+
+JOIN person pers
+ON tm.idprojektteam = pers.idprojektteam
+
+JOIN rollen rol
+ON tm.idprojektteam = rol.idprojektteam
+;
+CREATE VIEW stakeholder AS
+SELECT
+pro.idprojekt
+,det.idstakeholder
+,det.idperson
+,det.idrolle
+,det.name
+,det.vorname
+,det.strasse
+,det.strassen_nr
+,det.wohnort
+,det.wohnort_plz
+,det.idfunktion
+,det.idabteilung
+,det.rolle_desc
+FROM
+projekt pro
+
+JOIN stakeholder stak
+ON pro.idprojekt = stak.idprojekt
+
+JOIN rollen rol
+ON stak.idstakeholder = rol.idstakeholder
+
+JOIN person pers
+ON stak.idstakeholder = pers.idstakeholder
+;
