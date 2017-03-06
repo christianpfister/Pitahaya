@@ -4,6 +4,10 @@ var app = angular.module('myproj', []);
 
 app.controller('showproj', function($scope, $http,$interval) {
    load_project();
+   
+   $scope.propertyName = 'idProjekt';
+   sortBy(propertyName);
+   $scope.reverse = true;
    $interval(function(){
 	   load_project();
 	   
@@ -14,6 +18,14 @@ app.controller('showproj', function($scope, $http,$interval) {
             $scope.projects = response.data;
         });
    };
+   
+
+  
+   function sortBy(propertyName) {
+	    $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+	    $scope.propertyName = propertyName;
+	  };
+
 });
 
 

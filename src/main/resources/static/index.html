@@ -4,10 +4,13 @@
   <title>Litschi - Projektportfoliomanagement</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Boostrap CSS -->
   <link rel="stylesheet" type="text/css" media="all" href="bootstrap/css/bootstrap.min.css" />
+  
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-    
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <!-- Include all compiled plugins (below), or include individual files as needed -->   
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="hello.js"></script>
@@ -79,30 +82,67 @@
     <div class="col-sm-2 sidenav">
      
     </div>
+      
+    
     <div class="col-sm-8 text-left"> 
       <h1>Projektportfoliomanagement</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       <hr>
       <h3>Projektpipeline</h3>
-     
-  
-<div data-ng-controller="showproj" >
-
-	<table class="table">
+    
  
-  
-  
-  <tr data-ng-repeat="projects in projects | orderBy:'idProjekt'">
-    <td>{{projects.idProjekt}}</td>
-    <td>{{projects.Projekt_TITLE}}</td>
-    <td>{{projects.Projekt_DESC}}</td>
-  </tr>
-</table>
+  <form class="form-horizontal">
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="projectname">Suche:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" data-ng-model="Project_TITLE"  placeholder="Projektname eingeben."></input>
+      </div>
+    </div>
+     <p></p>
+     </form>
+     
+  			
+  				
+  			
+			<div data-ng-controller="showproj" >
+			<pre>Sort by = {{propertyName}}; reverse = {{reverse}}</pre>
+			
+			
+			<table class="table">
+			 <tr>
+		      <th>
+		        <button data-ng-click="sortBy('idProjekt')">ProjectID:</button>
+		        <span class="sortorder" data-ng-show="propertyName === 'idProjekt'" data-ng-class="{reverse: reverse}"></span>
+		      </th>
+		      <th>
+		        <button data-ng-click="sortBy('Projekt_TITLE')">Projekttitel:</button>
+		        <span class="sortorder" data-ng-show="propertyName === 'Projekt_TITLE'" data-ng-class="{reverse: reverse}"></span>
+		      </th>
+		      <th>
+		        <button data-ng-click="sortBy('Projekt_DESC')">Projektbeschreibung:</button>
+		        <span class="sortorder" data-ng-show="propertyName === 'Projekt_DESC'" data-ng-class="{reverse: reverse}"></span>
+		      </th>
+		      <th>
+		      </th>
+		      <th>
+		      </th>
+		    </tr>
+			
+			
+			
+			  <tr data-ng-repeat="projects in projects | orderBy:propertyName:reverse | filter:Project_TITLE">
+			    <td>{{projects.idProjekt}}</td>
+			    <td>{{projects.Projekt_TITLE}}</td>
+			    <td>{{projects.Projekt_DESC}}</td>
+			    <td><a data-ng-href="#/edit/{{project.$id}}"><i class="glyphicon glyphicon-pencil" aria-hidden="true"></i></a></td>
+			    <td><a data-ng-href="#/edit/{{project.$id}}"><i class="glyphicon glyphicon-trash" aria-hidden="true"></i></a></td>
+			  </tr>
+			</table>
+			</div>
 
-</div>
 
 
-
+<!-- Neues Projekt Formular -->
 <div data-ng-controller="showctrl">
 
 <button type="button" class="btn btn-default" data-ng-click="myFunc()">neues Projekt erstellen</button>
@@ -115,13 +155,13 @@
     <div class="form-group">
       <label class="control-label col-sm-2" for="projectname">Projektname:</label>
       <div class="col-sm-6">
-        <input type="email" class="form-control" id="projectname" placeholder="Projektname eingeben.">
+        <input type="text" class="form-control" id="projectname" placeholder="Projektname eingeben.">
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="projectdescription">Beschreibung:</label>
       <div class="col-sm-6">          
-        <input type="password" class="form-control" id="projectdescription" placeholder="Projektbeschreibung eingeben">
+        <input type="text" class="form-control" id="projectdescription" placeholder="Projektbeschreibung eingeben">
       </div>
     </div>
     <div class="form-group">        
@@ -141,12 +181,11 @@
     
     
 </div>
+
+
 <p></p>
 
 </div>
-
-
-
 
 
 
