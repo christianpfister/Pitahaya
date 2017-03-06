@@ -2,11 +2,18 @@ var app = angular.module('myproj', []);
 
 
 
-app.controller('showproj', function($scope, $http) {
-    $http.get('http://localhost:4567/hello').
+app.controller('showproj', function($scope, $http,$interval) {
+   load_project();
+   $interval(function(){
+	   load_project();
+	   
+   },5000);
+   function load_project(){
+	$http.get('http://localhost:4567/hello').
         then(function(response) {
-            $scope.greeting = response.data;
+            $scope.projects = response.data;
         });
+   };
 });
 
 
@@ -17,12 +24,3 @@ app.controller('showctrl', function($scope) {
     }
 });
 
-
-app.controller('refresh_control',function($scope,$interval){
-var c=0;
-$scope.message="This DIV is refreshed "+c+" time.";
-$interval(function(){
-$scope.message="This DIV is refreshed "+c+" time.";
-c++;
-},1000);
-});

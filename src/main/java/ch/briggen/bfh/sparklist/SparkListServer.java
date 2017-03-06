@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 
 import ch.briggen.bfh.sparklist.domain.Item;
 import ch.briggen.bfh.sparklist.domain.ItemRepository;
+import ch.briggen.bfh.sparklist.domain.Projekt;
+import ch.briggen.bfh.sparklist.domain.ProjektRepository;
 import ch.briggen.bfh.sparklist.web.DbSchemaListController;
 import ch.briggen.bfh.sparklist.web.GetNameController;
 import ch.briggen.bfh.sparklist.web.ItemDeleteController;
@@ -18,6 +20,7 @@ import ch.briggen.bfh.sparklist.web.ItemEditController;
 import ch.briggen.bfh.sparklist.web.ItemNewController;
 import ch.briggen.bfh.sparklist.web.ItemUpdateController;
 import ch.briggen.bfh.sparklist.web.ListManagementRootController;
+import ch.briggen.bfh.sparklist.web.ProjektManagementRootController;
 import ch.briggen.bfh.sparklist.web.StartScreenController;
 import ch.briggen.sparkbase.H2SparkApp;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
@@ -44,9 +47,11 @@ public class SparkListServer extends H2SparkApp {
     	get("/item/delete", new ItemDeleteController(), new ThymeleafTemplateEngine());
     	post("/item/new", new ItemNewController(), new ThymeleafTemplateEngine());
 
+
+    	get("/projekt", new ProjektManagementRootController(), new ThymeleafTemplateEngine());
     	
-    	ItemRepository repository = new ItemRepository();
-    	HashMap<String, Collection<Item>> model = new HashMap<String, Collection<Item>>();
+    	ProjektRepository repository = new ProjektRepository();
+    	HashMap<String, Collection<Projekt>> model = new HashMap<String, Collection<Projekt>>();
 		
     	Gson gson = new Gson();
     	get("/hello", (request, response) -> model.put("list", repository.getAll()), gson::toJson);

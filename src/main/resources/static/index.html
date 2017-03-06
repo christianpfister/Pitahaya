@@ -89,11 +89,13 @@
 <div data-ng-controller="showproj" >
 
 	<table class="table">
+ 
   
-  <tr data-ng-repeat="greeting in greeting | filter:search">
-    <td>{{greeting.id}}</td>
-    <td>{{greeting.name}}</td>
-    <td>{{greeting.quantity}}</td>
+  
+  <tr data-ng-repeat="projects in projects | orderBy:'idProjekt'">
+    <td>{{projects.idProjekt}}</td>
+    <td>{{projects.Projekt_TITLE}}</td>
+    <td>{{projects.Projekt_DESC}}</td>
   </tr>
 </table>
 
@@ -136,13 +138,6 @@
     </div>
   </form>
 </div>
-    
-    
-    
-    
-    
-    
-    
     
     
 </div>
