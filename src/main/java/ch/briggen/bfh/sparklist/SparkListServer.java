@@ -54,6 +54,8 @@ public class SparkListServer extends H2SparkApp {
 		
     	Gson gson = new Gson();
     	get("/hello", (request, response) -> model.put("list", repository.getAll()), gson::toJson);
+    	
+    	get("/hello",(request,response) -> new ProjektManagementRootController(), gson::toJson);
 	
         get("/th", new GetNameController(), new ThymeleafTemplateEngine());
         post("/th", new DbSchemaListController(), new ThymeleafTemplateEngine());		
