@@ -34,6 +34,8 @@
       height: 100%;
     }
     
+ 
+    
     /* Set black background color, white text and some padding */
     footer {
       background-color: #555;
@@ -49,6 +51,14 @@
       }
       .row.content {height:auto;} 
     }
+    
+    .sortorder:after {
+  content: '\25bc';   // BLACK UP-POINTING TRIANGLE
+}
+.sortorder.reverse:after {
+  content: '\25b2';   // BLACK DOWN-POINTING TRIANGLE
+}
+    
   </style>
 </head>
 <body>
@@ -95,7 +105,7 @@
      <div class="form-group">
       <label class="control-label col-sm-2" for="projectname">Suche:</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control" data-ng-model="Project_TITLE"  placeholder="Projektname eingeben."></input>
+        <input type="text" autocomplete="off" class="form-control" data-ng-model="Project_TITLE"  placeholder="Projektname eingeben."></input>
       </div>
     </div>
      <p></p>
@@ -105,21 +115,19 @@
   				
   			
 			<div data-ng-controller="showproj" >
-			<pre>Sort by = {{propertyName}}; reverse = {{reverse}}</pre>
-			
 			
 			<table class="table">
 			 <tr>
 		      <th>
-		        <button data-ng-click="sortBy('idProjekt')">ProjectID:</button>
-		        <span class="sortorder" data-ng-show="propertyName === 'idProjekt'" data-ng-class="{reverse: reverse}"></span>
+		        <a data-ng-click="sortBy('idProjekt')">ProjectID:</a>
+		       <span class="sortorder" data-ng-show="propertyName === 'idProjekt'" data-ng-class="{reverse: reverse}"></span>
 		      </th>
 		      <th>
-		        <button data-ng-click="sortBy('Projekt_TITLE')">Projekttitel:</button>
+		        <a data-ng-click="sortBy('Projekt_TITLE')">Projekttitel:</a>
 		        <span class="sortorder" data-ng-show="propertyName === 'Projekt_TITLE'" data-ng-class="{reverse: reverse}"></span>
 		      </th>
 		      <th>
-		        <button data-ng-click="sortBy('Projekt_DESC')">Projektbeschreibung:</button>
+		        <a data-ng-click="sortBy('Projekt_DESC')">Projektbeschreibung:</a>
 		        <span class="sortorder" data-ng-show="propertyName === 'Projekt_DESC'" data-ng-class="{reverse: reverse}"></span>
 		      </th>
 		      <th>
