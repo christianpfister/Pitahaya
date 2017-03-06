@@ -43,12 +43,7 @@ public class SparkListServer extends H2SparkApp {
     	post("/item/update", new ItemUpdateController(), new ThymeleafTemplateEngine());
     	get("/item/delete", new ItemDeleteController(), new ThymeleafTemplateEngine());
     	post("/item/new", new ItemNewController(), new ThymeleafTemplateEngine());
-<<<<<<< HEAD
-=======
-    	
-    	get("/start", new StartScreenController(), new ThymeleafTemplateEngine());
->>>>>>> branch 'master' of https://gitlab.com/GRP-TOSEFS17-LITSCHI/PRJ-TOSEFS17-LITSCHI.git
-    	
+  	
     	
     	ItemRepository repository = new ItemRepository();
     	HashMap<String, Collection<Item>> model = new HashMap<String, Collection<Item>>();
