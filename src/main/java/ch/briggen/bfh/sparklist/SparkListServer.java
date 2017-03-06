@@ -14,6 +14,7 @@ import ch.briggen.bfh.sparklist.web.ItemEditController;
 import ch.briggen.bfh.sparklist.web.ItemNewController;
 import ch.briggen.bfh.sparklist.web.ItemUpdateController;
 import ch.briggen.bfh.sparklist.web.ListManagementRootController;
+import ch.briggen.bfh.sparklist.web.StartScreenController;
 import ch.briggen.sparkbase.H2SparkApp;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
 
@@ -36,7 +37,8 @@ public class SparkListServer extends H2SparkApp {
     	post("/item/update", new ItemUpdateController(), new ThymeleafTemplateEngine());
     	get("/item/delete", new ItemDeleteController(), new ThymeleafTemplateEngine());
     	post("/item/new", new ItemNewController(), new ThymeleafTemplateEngine());
-
+    	
+    	get("/start", new StartScreenController(), new ThymeleafTemplateEngine());
     	
     	
 		get("/hello", (req, res) -> "Hello World");
