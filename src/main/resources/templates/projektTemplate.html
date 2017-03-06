@@ -19,12 +19,8 @@
 			<th>Namen</th>
 			<th>Menge</th>
 		</tr>
-		<tr th:each="item : ${list}">
-			<td th:text="${item.getName()}">Ding 1</td>
-			<td th:text="${item.getQuantity()}">99</td>
-			<td><a href="" th:href="${'/item?id=' + item.getId()}" class="btn btn-default btn-xs">bearbeiten <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></a></td>
-			<td><a href="" th:href="${'/item/delete?id=' + item.getId()}" class="btn btn-default btn-xs">löschen <span class="glyphicon glyphicon-erase" aria-hidden="true"></span></a></td>
-
+		<tr th:each="item : ${projekt}">
+			<td th:text="${item.getIdProjekt()}">Ding 1</td>
 		</tr>
 	</table>
 
