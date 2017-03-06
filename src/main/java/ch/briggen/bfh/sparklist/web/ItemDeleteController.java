@@ -1,6 +1,6 @@
 package ch.briggen.bfh.sparklist.web;
 
-/** Notiz PK, Test für Commit	
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
