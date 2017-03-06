@@ -83,4 +83,19 @@ Foreign key (idTerminArt) references terminart (idTerminArt)
 on delete set null,
 )
 ;
+CREATE VIEW projekt_overview AS
+SELECT
+pro.idprojekt
+,det.idprojektdetails
+,det.projekt_title
+,det.projekt_desc
+,det.idprojektstatus
+,stat.projektstatus_desc
+FROM
+projekt pro
 
+JOIN projektdetails det
+ON pro.idprojekt = det.idprojekt
+
+JOIN projektstatus stat
+ON det.idprojektstatus = stat.idprojektstatus

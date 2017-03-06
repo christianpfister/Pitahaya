@@ -22,12 +22,16 @@ public class Projekt {
 	 * @param name Name des eintrags in der Liste
 	 * @param quantity Menge
 	 */
-	public Projekt(int idProjekt, int idProjektdetails, int idProjektstatus, String Projekt_TITLE, String Projekt_DESC, String Projektstatus_DESC)
-	{
+
+	public Projekt(int idProjekt, int idProjektdetails, int idProjektstatus, String projekt_TITLE, String projekt_DESC,
+			String projektstatus_DESC) {
+		super();
 		this.idProjekt = idProjekt;
-		this.Projekt_TITLE = Projekt_TITLE;
-		this.Projekt_DESC = Projekt_DESC;
-		this.Projektstatus_DESC = Projektstatus_DESC;
+		this.idProjektdetails = idProjektdetails;
+		this.idProjektstatus = idProjektstatus;
+		this.Projekt_TITLE = projekt_TITLE;
+		this.Projekt_DESC = projekt_DESC;
+		this.Projektstatus_DESC = projektstatus_DESC;
 	}
 
 	public int getIdProjekt() {
