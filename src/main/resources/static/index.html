@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html data-ng-app="myproj" lang="de">
 <head>
   <title>Litschi - Projektportfoliomanagement</title>
   <meta charset="utf-8">
@@ -11,6 +11,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="hello.js"></script>
+
+  
   
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
@@ -25,7 +27,7 @@
     /* Set gray background color and 100% height */
     .sidenav {
       padding-top: 20px;
-      background-color: #f1f1f1;
+      background-color: #white;
       height: 100%;
     }
     
@@ -81,21 +83,72 @@
       <h1>Projektportfoliomanagement</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       <hr>
-      <h3>Test</h3>
+      <h3>Projektpipeline</h3>
      
-     
-<div data-ng-app="demo" data-ng-controller="hello" >
+  
+<div data-ng-controller="showproj" >
 
 	<table class="table">
+ 
   
-  <tr data-ng-repeat="greeting in greeting | filter:search">
-    <td>{{greeting.id}}</td>
-    <td>{{greeting.name}}</td>
-    <td>{{greeting.quantity}}</td>
+  
+  <tr data-ng-repeat="projects in projects | orderBy:'idProjekt'">
+    <td>{{projects.idProjekt}}</td>
+    <td>{{projects.Projekt_TITLE}}</td>
+    <td>{{projects.Projekt_DESC}}</td>
   </tr>
 </table>
 
 </div>
+
+
+
+<div data-ng-controller="showctrl">
+
+<button type="button" class="btn btn-default" data-ng-click="myFunc()">neues Projekt erstellen</button>
+
+<div data-ng-show="showMe">
+   <p></p>
+  <div class="container">
+ 
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="projectname">Projektname:</label>
+      <div class="col-sm-6">
+        <input type="email" class="form-control" id="projectname" placeholder="Projektname eingeben.">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="projectdescription">Beschreibung:</label>
+      <div class="col-sm-6">          
+        <input type="password" class="form-control" id="projectdescription" placeholder="Projektbeschreibung eingeben">
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-6">
+        <div class="checkbox">
+          <label><input type="checkbox">aktiv</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-6">
+        <button type="submit" class="btn btn-default" data-ng-click="myFunc()">speichern <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
+      </div>
+    </div>
+  </form>
+</div>
+    
+    
+</div>
+<p></p>
+
+</div>
+
+
+
+
+
 
     </div>
     <div class="col-sm-2 sidenav">
