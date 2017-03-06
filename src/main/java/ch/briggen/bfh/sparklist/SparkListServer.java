@@ -18,6 +18,7 @@ import ch.briggen.bfh.sparklist.web.ItemEditController;
 import ch.briggen.bfh.sparklist.web.ItemNewController;
 import ch.briggen.bfh.sparklist.web.ItemUpdateController;
 import ch.briggen.bfh.sparklist.web.ListManagementRootController;
+import ch.briggen.bfh.sparklist.web.StartScreenController;
 import ch.briggen.sparkbase.H2SparkApp;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
 import com.google.gson.Gson;
@@ -42,6 +43,11 @@ public class SparkListServer extends H2SparkApp {
     	post("/item/update", new ItemUpdateController(), new ThymeleafTemplateEngine());
     	get("/item/delete", new ItemDeleteController(), new ThymeleafTemplateEngine());
     	post("/item/new", new ItemNewController(), new ThymeleafTemplateEngine());
+<<<<<<< HEAD
+=======
+    	
+    	get("/start", new StartScreenController(), new ThymeleafTemplateEngine());
+>>>>>>> branch 'master' of https://gitlab.com/GRP-TOSEFS17-LITSCHI/PRJ-TOSEFS17-LITSCHI.git
     	
     	
     	ItemRepository repository = new ItemRepository();

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>List Manager</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" type="text/css" media="all"
+	href="bootstrap/css/bootstrap.min.css" />
+
+
+</head>
+
+<body>
+
+	<h1>ListManager</h1>
+	<div class="container">
+		<table class="table table-hover table-condensed">
+			<thead>
+				<tr>
+					<th>Item</th>
+					<th>Amount</th>
+					<th>Edit</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="item : ${list}">
+					<td th:text="${item.getName()}">Ding 1</td>
+					<td th:text="${item.getQuantity()}">99</td>
+					<td><a href="" th:href="${'/item?id=' + item.getId()}"><span
+							class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a> <a
+						href="" th:href="${'/item/delete?id=' + item.getId()}"><span
+							class="glyphicon glyphicon-erase" aria-hidden="true"></span></a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<a href="/item" data-toggle="popover" title="Hinzufügen"
+		data-content="Test" class="btn btn-default">neues Item erstelllen</a>
+
+	<a href="#" data-toggle="popover" data-html="True" title="Hinzufügen"
+		data-content="Test" class="btn btn-default">neues Item erstelllen</a>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+
+	<!-- Popover Script -->
+	<script>
+		$(document).ready(function() {
+			$('[data-toggle="popover"]').popover();
+		});
+	</script>
+
+</body>
+</html>

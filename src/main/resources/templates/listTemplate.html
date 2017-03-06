@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html data-ng-app="demo" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>List Manager</title>
 	
@@ -8,66 +8,34 @@
 	
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" type="text/css" media="all" href="bootstrap/css/bootstrap.min.css" />
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-    	<script src="hello.js"></script>
 	
-
-
 
 </head>
 
 <body>
-	<h1>Hallo</h1>
+	<h1>ListManager</h1>
 	<table>
 		<tr>
-			<th>Name</th>
+			<th>Namen</th>
 			<th>Menge</th>
 		</tr>
 		<tr th:each="item : ${list}">
 			<td th:text="${item.getName()}">Ding 1</td>
 			<td th:text="${item.getQuantity()}">99</td>
-			<td><a href="" th:href="${'/item?id=' + item.getId()}">bearbeiten</a></td>
-			<td><a href="" th:href="${'/item/delete?id=' + item.getId()}">löschen</a></td>
+			<td><a href="" th:href="${'/item?id=' + item.getId()}" class="btn btn-default btn-xs">bearbeiten <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></a></td>
+			<td><a href="" th:href="${'/item/delete?id=' + item.getId()}" class="btn btn-default btn-xs">löschen <span class="glyphicon glyphicon-erase" aria-hidden="true"></span></a></td>
 
 		</tr>
 	</table>
 
-  	
-
-<h1>Hide the DIV: <input type="checkbox" data-ng-model="myCheck"/></h1>
-
-<div data-ng-controller="hello"   data-ng-show="myCheck">
-
-	<table class="table">
-  
-   
- 
-  <tr data-ng-repeat="greeting in greeting | filter:search">
-    <td>{{greeting.id}}</td>
-    <td>{{greeting.name}}</td>
-    <td>{{greeting.quantity}}</td>
-  </tr>
-</table>
-
-
-
-
-</div>
-
-
-
-
-	<a href="/item" class="btn btn-default">neues Item erstellen</a>
+	<a href="/item" class="btn btn-default">neues Item erstelllen</a>
 	
-
-
+	<a href="/start" class="btn btn-default">StartScreen</a>
+	
    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    
-    
-
+    <script src="bootstrap/js/bootstrap.min.js"></script>	
 
 </body>
 </html>
