@@ -7,9 +7,9 @@ public class Projektteam {
 	private String Name;
 	private String Vorname;
 	private String Strasse;
-	private String Strassen_Nr;
+	private int Strassen_Nr;
 	private String Wohnort;
-	private String Wohnort_PLZ;
+	private int Wohnort_PLZ;
 	private String idFunktion;
 	private String idAbteilung;
 	
@@ -18,7 +18,7 @@ public class Projektteam {
 		
 	}
 	
-	public Projektteam(int idProjektteam, int idPerson, int idRolle, String Name, String Vorname, String Strasse, String Strassen_Nr, String Wohnort, String Wohnort_PLZ, String idFunktion, String idAbteilung)
+	public Projektteam(int idProjektteam, int idPerson, int idRolle, String Name, String Vorname, String Strasse, int Strassen_Nr, String Wohnort, int Wohnort_PLZ, String idFunktion, String idAbteilung)
 	{
 		this.idProjektteam = idProjektteam;
 		this.idPerson = idPerson;
@@ -81,11 +81,11 @@ public class Projektteam {
 		Strasse = strasse;
 	}
 
-	public String getStrassen_Nr() {
+	public int getStrassen_Nr() {
 		return Strassen_Nr;
 	}
 
-	public void setStrassen_Nr(String strassen_Nr) {
+	public void setStrassen_Nr(int strassen_Nr) {
 		Strassen_Nr = strassen_Nr;
 	}
 
@@ -97,11 +97,11 @@ public class Projektteam {
 		Wohnort = wohnort;
 	}
 
-	public String getWohnort_PLZ() {
+	public int getWohnort_PLZ() {
 		return Wohnort_PLZ;
 	}
 
-	public void setWohnort_PLZ(String wohnort_PLZ) {
+	public void setWohnort_PLZ(int wohnort_PLZ) {
 		Wohnort_PLZ = wohnort_PLZ;
 	}
 
