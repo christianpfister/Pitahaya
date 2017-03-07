@@ -35,16 +35,16 @@ public class SparkListServer extends H2SparkApp {
     	//Beispiel aus Sparklist
     	//get("/", new ListManagementRootController(), new ThymeleafTemplateEngine());
     	
-<<<<<<< HEAD
+
     	get("/projectoverview", new ProjektManagementRootController(),jsonEngine::toJson);
     	get("/projectoverviewid/:id", new ProjektDetailController(), jsonEngine::toJson);
     	post("/newprojekt", new ProjektNewController(), null);
-=======
+
     	get("/projektoverview", new ProjektManagementRootController(),jsonEngine::toJson);
     	get("/projektoverviewid", new ProjektDetailController(), jsonEngine::toJson);
     	
-    	post("/newprojekt", new ProjektNewController(), jsonEngine::toJson);
->>>>>>> branch 'master' of https://gitlab.com/GRP-TOSEFS17-LITSCHI/PRJ-TOSEFS17-LITSCHI.git
+    	post("/newprojekt", new ProjektNewController(), null);
+
     	
     	//post("/add", new ProjektNewController(), new ThymeleafTemplateEngine());
         get("/th", new GetNameController(), new ThymeleafTemplateEngine());

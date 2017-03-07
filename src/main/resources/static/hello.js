@@ -11,13 +11,9 @@ app.controller('showproj', function($scope, $http,$interval) {
 	   load_project();
 	 
 	   
-   },100000);
+   },5000);
    function load_project(){
-<<<<<<< HEAD
 	$http.get('http://localhost:4567/projectoverview').
-=======
-	$http.get('http://localhost:4567/projektoverview').
->>>>>>> branch 'master' of https://gitlab.com/GRP-TOSEFS17-LITSCHI/PRJ-TOSEFS17-LITSCHI.git
         then(function(response) {
             $scope.projects = response.data;
         });
@@ -48,7 +44,7 @@ app.controller("newproject", ['$scope', '$http', function($scope, $http) {
 
                               idProjekt : $scope.idProjekt,
 
-                              Projekt_TITEL : $scope.Projekt_TITEL,
+                              Projekt_TITLE : $scope.Projekt_TITLE,
 
                               Projekt_DESC : $scope.Projekt_DESC,
                               
