@@ -20,27 +20,26 @@ import com.google.gson.JsonElement;
 
 /**
  * WWW-Controller
- * Liefert unter "/" die ganze Liste
+ * Liefert unter "/projektoverviewid" das Projekt mit der aufgerufenen ID
  * 
  * !!! Diese Version verfügt bewusst über keine Validierung / Fehlerbehandlung !!!
  * 
- * @author M. Briggen
+ * @author Gil Bauman
  *
  */
-public class ProjektManagementRootController implements Route {
+public class ProjektDetailController implements Route {
 	
-	private final Logger log = LoggerFactory.getLogger(ProjektManagementRootController.class);
+	private final Logger log = LoggerFactory.getLogger(ProjektDetailController.class);
 
 	ProjektRepository repository = new ProjektRepository();
 
 	/**
-	 *Liefert die Liste als Root-Seite "/" zurück 
+	 *Liefert das Projekt anhand der ID zurück
 	 */	
 	public Object handle(Request request, Response response) throws Exception {
-		
-		//Projekte werden geladen und die Collection dann für das Template unter dem namen "projekt" bereitgestellt
-		//Das Template muss dann auch den Namen "projekt" verwenden.
-
-		return new ProjektRepository().getAll();
+		String idString = request.queryParams("id");
+		int id = Integer.parseInt(idString);
+		Projekt i = repository.getById(id);
+		return i;
 	}
 }

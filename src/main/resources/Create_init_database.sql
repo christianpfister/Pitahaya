@@ -105,17 +105,10 @@ ON det.idprojektstatus = stat.idprojektstatus
 CREATE VIEW projekt_team AS
 SELECT
 pro.idprojekt
-,det.idprojektteam
-,det.idperson
-,det.idrolle
-,det.name
-,det.vorname
-,det.strasse
-,det.strassen_nr
-,det.wohnort
-,det.wohnort_plz
-,det.idfunktion
-,det.idabteilung
+,tm.idprojektteam
+,pers.*
+,rol.rolle_desc
+
 FROM
 projekt pro
 
@@ -123,26 +116,18 @@ JOIN projektteam tm
 ON pro.idprojekt = tm.idprojekt
 
 JOIN person pers
-ON tm.idprojektteam = pers.idprojektteam
+ON tm.idperson= pers.idperson
 
 JOIN rollen rol
-ON tm.idprojektteam = rol.idprojektteam
+ON tm.idrolle = rol.idrolle
 ;
-CREATE VIEW stakeholder AS
+CREATE VIEW projekt_stakeholder AS
 SELECT
 pro.idprojekt
-,det.idstakeholder
-,det.idperson
-,det.idrolle
-,det.name
-,det.vorname
-,det.strasse
-,det.strassen_nr
-,det.wohnort
-,det.wohnort_plz
-,det.idfunktion
-,det.idabteilung
-,det.rolle_desc
+,stak.idstakeholder
+,pers.*
+,rol.rolle_desc
+
 FROM
 projekt pro
 
@@ -150,8 +135,8 @@ JOIN stakeholder stak
 ON pro.idprojekt = stak.idprojekt
 
 JOIN rollen rol
-ON stak.idstakeholder = rol.idstakeholder
+ON stak.idrolle = rol.idrolle
 
 JOIN person pers
-ON stak.idstakeholder = pers.idstakeholder
+ON stak.idperson = pers.idperson
 ;
