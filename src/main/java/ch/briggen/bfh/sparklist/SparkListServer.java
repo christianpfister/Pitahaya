@@ -32,17 +32,19 @@ public class SparkListServer extends H2SparkApp {
     @Override
 	protected void doConfigureHttpHandlers() {
 
-    	//Beispiel aus Sparklist
+    	//Beispiel aus Sparklist für Item
     	//get("/", new ListManagementRootController(), new ThymeleafTemplateEngine());
+    	//post("/add", new ProjektNewController(), new ThymeleafTemplateEngine());
     	
+
     	get("/projektoverview", new ProjektManagementRootController(),jsonEngine::toJson);
-    	get("/projektoverviewid/:id", new ProjektDetailController(), jsonEngine::toJson);
-    	post("/newprojekt", new ProjektNewController(), jsonEngine::toJson);
+    	get("/projektoverviewid", new ProjektDetailController(), jsonEngine::toJson);
+    	
+    	post("/newprojekt", new ProjektNewController(), null);
 
     	
-    	//post("/add", new ProjektNewController(), new ThymeleafTemplateEngine());
-        get("/th", new GetNameController(), new ThymeleafTemplateEngine());
-        post("/th", new DbSchemaListController(), new ThymeleafTemplateEngine());		
+
+
 	}
 
 

@@ -28,7 +28,6 @@ public class ProjektRepository {
 	 * Liefert alle Projekte in der Datenbank
 	 * @return Collection aller Items
 	 */
-
 	public Collection<Projekt> getAll(){
 		log.trace("getAll");
 		try(Connection conn = getConnection())
@@ -50,7 +49,6 @@ public class ProjektRepository {
 	 * @params id des Projekts
 	 * @return Projekt oder Null
 	 */
-	
 	public Projekt getById(int idProjekt){
 		log.trace("getById" + idProjekt);
 		try(Connection conn = getConnection())
@@ -67,10 +65,11 @@ public class ProjektRepository {
 			throw new RepositoryException(msg);
 		}
 	}
+	
 	/**
 	 * 
 	 * @param i ist ein Objekt Projekt
-	 * @return id des Projekts
+	 * 
 	 */
 	public void insert(Projekt i){
 		log.trace("insert" + i);
@@ -83,9 +82,7 @@ public class ProjektRepository {
 			PreparedStatement stmt = conn.prepareStatement("insert into projekt (idProjekt) values (?)");
 			stmt.setInt(1, i.getIdProjekt());
 			stmt.executeUpdate();
-			ResultSet key = stmt.getGeneratedKeys();
-			key.next();
-			id = key.getInt(1);
+			log.trace("New Key" + id);
 		}
 		catch(SQLException e)
 		{
@@ -103,9 +100,6 @@ public class ProjektRepository {
 			stmt.setInt(3, i.getIdProjektstatus());
 			stmt.setInt(4, i.getIdProjekt());
 			stmt.executeUpdate();
-			ResultSet key = stmt.getGeneratedKeys();
-			key.next();
-			id = key.getInt(1);
 		}
 		catch(SQLException e)
 		{
@@ -120,9 +114,6 @@ public class ProjektRepository {
 					PreparedStatement stmt = conn.prepareStatement("insert into projektstatus (Projektstatus_DESC) values (?)");
 					stmt.setString(1, i.getProjektstatus_DESC());
 					stmt.executeUpdate();
-					ResultSet key = stmt.getGeneratedKeys();
-					key.next();
-					id = key.getInt(1);
 				}
 				catch(SQLException e)
 				{

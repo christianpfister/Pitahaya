@@ -9,8 +9,6 @@ app.controller('showproj', function($scope, $http,$interval) {
    $scope.reverse = false;
    $interval(function(){
 	   load_project();
-	 
-	   
    },100000);
    function load_project(){
 
@@ -45,7 +43,7 @@ app.controller("newproject", ['$scope', '$http', function($scope, $http) {
 
                               idProjekt : $scope.idProjekt,
 
-                              Projekt_TITEL : $scope.Projekt_TITEL,
+                              Projekt_TITLE : $scope.Projekt_TITLE,
 
                               Projekt_DESC : $scope.Projekt_DESC,
                               

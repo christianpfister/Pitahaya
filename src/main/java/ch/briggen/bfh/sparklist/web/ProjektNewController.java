@@ -46,6 +46,7 @@ public class ProjektNewController implements Route{
 	 */	
 	@Override
 	public Object handle( Request request, Response response) throws Exception {
+		
 		Gson gson = new Gson();
 		
 		log.trace("POST /item/new mit projektNew " + request.body());
@@ -55,7 +56,7 @@ public class ProjektNewController implements Route{
 		log.trace("POST /item/new mit projektNew " + projektNew);
 		
 		//insert gibt die von der DB erstellte id zurück.
-		int id = projektRepo.insert(projektNew);
+		projektRepo.insert(projektNew);
 		
 		//die neue Id wird dem Redirect als Parameter hinzugefügt
 		//der redirect erfolgt dann auf /item?id=432932
