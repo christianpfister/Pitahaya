@@ -13,11 +13,8 @@ app.controller('showproj', function($scope, $http,$interval) {
 	   
    },100000);
    function load_project(){
-<<<<<<< HEAD
-	$http.get('http://localhost:4567/projectoverview').
-=======
+
 	$http.get('http://localhost:4567/projektoverview').
->>>>>>> branch 'master' of https://gitlab.com/GRP-TOSEFS17-LITSCHI/PRJ-TOSEFS17-LITSCHI.git
         then(function(response) {
             $scope.projects = response.data;
         });

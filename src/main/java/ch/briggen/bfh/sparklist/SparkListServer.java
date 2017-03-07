@@ -35,9 +35,9 @@ public class SparkListServer extends H2SparkApp {
     	//Beispiel aus Sparklist
     	//get("/", new ListManagementRootController(), new ThymeleafTemplateEngine());
     	
-    	get("/projectoverview", new ProjektManagementRootController(),jsonEngine::toJson);
-    	get("/projectoverviewid/:id", new ProjektDetailController(), jsonEngine::toJson);
-    	post("/newprojekt", new ProjektNewController(), null);
+    	get("/projektoverview", new ProjektManagementRootController(),jsonEngine::toJson);
+    	get("/projektoverviewid/:id", new ProjektDetailController(), jsonEngine::toJson);
+    	post("/newprojekt", new ProjektNewController(), jsonEngine::toJson);
 
     	
     	//post("/add", new ProjektNewController(), new ThymeleafTemplateEngine());

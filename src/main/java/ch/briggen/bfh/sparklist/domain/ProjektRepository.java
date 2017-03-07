@@ -72,7 +72,7 @@ public class ProjektRepository {
 	 * @param i ist ein Objekt Projekt
 	 * @return id des Projekts
 	 */
-	public int insert(Projekt i){
+	public void insert(Projekt i){
 		log.trace("insert" + i);
 		int id = 0;
 		
@@ -130,10 +130,6 @@ public class ProjektRepository {
 					log.error(msg , e);
 					throw new RepositoryException(msg);
 				}
-				
-				return id;
-				
-		
 	}
 	private static Collection<Projekt> mapProjekt(ResultSet rs) throws SQLException 
 	{

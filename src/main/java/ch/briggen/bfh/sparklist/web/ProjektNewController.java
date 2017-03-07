@@ -48,6 +48,8 @@ public class ProjektNewController implements Route{
 	public Object handle( Request request, Response response) throws Exception {
 		Gson gson = new Gson();
 		
+		log.trace("POST /item/new mit projektNew " + request.body());
+		
 		Projekt projektNew = gson.fromJson(request.body(), Projekt.class);
 
 		log.trace("POST /item/new mit projektNew " + projektNew);
