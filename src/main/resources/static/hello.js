@@ -11,9 +11,9 @@ app.controller('showproj', function($scope, $http,$interval) {
 	   load_project();
 	 
 	   
-   },5000);
+   },100000);
    function load_project(){
-	$http.get('http://localhost:4567/hello').
+	$http.get('http://localhost:4567/projectoverview').
         then(function(response) {
             $scope.projects = response.data;
         });
@@ -26,6 +26,62 @@ app.controller('showproj', function($scope, $http,$interval) {
 
 
 });
+
+
+app.controller("newproject", ['$scope', '$http', function($scope, $http) {
+
+ 
+
+    $scope.addnewproject = function(){             
+
+           $scope.message ="schade";
+
+            // Writing it to the server
+
+            //              
+
+            var dataObj = {
+
+                              idProjekt : $scope.idProjekt,
+
+                              Projekt_TITEL : $scope.Projekt_TITEL,
+
+                              Projekt_DESC : $scope.Projekt_DESC,
+                              
+                              idProjektstatus : $scope.idProjektstatus,
+                              
+                              Projektstatus_DESC : $scope.Projektstatus_DESC
+                              
+
+            };      
+
+            var res = $http.post('/newprojekt', dataObj);
+
+            res.success(function(data, status, headers, config) {
+
+                     $scope.message = data;
+
+            });
+
+            res.error(function(data, status, headers, config) {
+
+                     alert( "failure message: " + JSON.stringify({data: data}));
+
+            });             
+
+            // Making the fields empty
+
+            //
+
+            $scope.name='';
+
+            $scope.employees='';
+
+            $scope.headoffice='';
+
+    };
+
+}]);
 
 
 app.controller('showctrl', function($scope) {

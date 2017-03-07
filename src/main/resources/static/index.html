@@ -155,35 +155,51 @@
 
 <button type="button" class="btn btn-default" data-ng-click="myFunc()">neues Projekt erstellen</button>
 
-<div data-ng-show="showMe">
+<div data-ng-show="showMe" data-ng-controller="newproject">
    <p></p>
   <div class="container">
  
-  <form class="form-horizontal">
+  <form class="form-horizontal" data-ng-submit="addnewproject()">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="projectname">ProjekID:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" data-ng-model="idProjekt" id="projectname" placeholder="Projektname eingeben.">
+      </div>
+    </div>
+   
     <div class="form-group">
       <label class="control-label col-sm-2" for="projectname">Projektname:</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control" id="projectname" placeholder="Projektname eingeben.">
+        <input type="text" class="form-control" data-ng-model="Projekt_TITEL" id="projectname" placeholder="Projektname eingeben.">
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="projectdescription">Beschreibung:</label>
       <div class="col-sm-6">          
-        <input type="text" class="form-control" id="projectdescription" placeholder="Projektbeschreibung eingeben">
+        <input type="text" class="form-control" data-ng-model="Projekt_DESC" id="projectdescription" placeholder="Projektbeschreibung eingeben">
       </div>
     </div>
+      <div class="form-group">
+      <label class="control-label col-sm-2" for="projectname">ProjekStatusID:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" data-ng-model="idProjektstatus" id="projectname" placeholder="Projektname eingeben.">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="projectname">ProjekStatusID:</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" data-ng-model="Projektstatus_DESC" id="projectname" placeholder="Projektname eingeben.">
+      </div>
+    </div>
+    
+    
+    
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-6">
-        <div class="checkbox">
-          <label><input type="checkbox">aktiv</label>
-        </div>
+        <button type="submit" class="btn btn-default" >speichern <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
       </div>
     </div>
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-6">
-        <button type="submit" class="btn btn-default" data-ng-click="myFunc()">speichern <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
-      </div>
-    </div>
+    Message:{{message}}
   </form>
 </div>
     
