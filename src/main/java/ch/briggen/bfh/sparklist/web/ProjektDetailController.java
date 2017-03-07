@@ -1,22 +1,13 @@
 package ch.briggen.bfh.sparklist.web;
 
-import java.util.Collection;
-import java.util.HashMap;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import ch.briggen.bfh.sparklist.domain.Item;
-import ch.briggen.bfh.sparklist.domain.ItemRepository;
 import ch.briggen.bfh.sparklist.domain.Projekt;
 import ch.briggen.bfh.sparklist.domain.ProjektRepository;
-import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
 import spark.Route;
-import spark.TemplateViewRoute;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 
 /**
  * WWW-Controller
@@ -37,9 +28,15 @@ public class ProjektDetailController implements Route {
 	 *Liefert das Projekt anhand der ID zurück
 	 */	
 	public Object handle(Request request, Response response) throws Exception {
+		
 		String idString = request.queryParams("idProjekt");
+		log.trace("Input für projektoverviewid mit ID" + idString);
 		int id = Integer.parseInt(idString);
+		
 		Projekt i = repository.getById(id);
+		
+		log.trace(i.getProjekt_TITLE());
+		
 		return i;
 	}
 }
