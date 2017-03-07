@@ -20,6 +20,7 @@ import ch.briggen.bfh.sparklist.domain.ProjektRepository;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
+import spark.Route;
 import spark.TemplateViewRoute;
 
 /**
@@ -29,7 +30,7 @@ import spark.TemplateViewRoute;
  *
  */
 
-public class ProjektNewController implements TemplateViewRoute {
+public class ProjektNewController implements Route{
 	
 	private final Logger log = LoggerFactory.getLogger(ProjektNewController.class);
 		
@@ -44,14 +45,10 @@ public class ProjektNewController implements TemplateViewRoute {
 	 * @return Redirect zurück zur Startmaske
 	 */	
 	@Override
-	public ModelAndView handle( Request request, Response response) throws Exception {
+	public Object handle( Request request, Response response) throws Exception {
 		Gson gson = new Gson();
-		Projekt target = new Projekt();
 		
-		Type fooType = new TypeToken<Collection<Projekt>>() {}.getType();
-
-		
-		Projekt projektNew = Gson.fromJson(request.toString(), fooType);
+		Projekt projektNew = gson.fromJson(request.body(), Projekt.class);
 
 		log.trace("POST /item/new mit projektNew " + projektNew);
 		
@@ -60,7 +57,7 @@ public class ProjektNewController implements TemplateViewRoute {
 		
 		//die neue Id wird dem Redirect als Parameter hinzugefügt
 		//der redirect erfolgt dann auf /item?id=432932
-		response.redirect("/");
+		response.redirect("/projektoverview");
 		return new ModelAndView(null, null);
 	}
 }
