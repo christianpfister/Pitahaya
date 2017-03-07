@@ -49,7 +49,7 @@ public class SparkListServer extends H2SparkApp {
     	
     	get("/hello", (request, response) -> model.put("list", new ProjektRepository().getAll()), gson::toJson);
     	post("/add", new ProjektManagementRootController(), new ThymeleafTemplateEngine());
-    	post();
+   
     	
         get("/th", new GetNameController(), new ThymeleafTemplateEngine());
         post("/th", new DbSchemaListController(), new ThymeleafTemplateEngine());		
