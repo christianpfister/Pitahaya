@@ -37,7 +37,7 @@ public class ProjektDetailController implements Route {
 	 *Liefert das Projekt anhand der ID zurück
 	 */	
 	public Object handle(Request request, Response response) throws Exception {
-		String idString = request.queryParams("id");
+		String idString = request.queryParams("idProjekt");
 		int id = Integer.parseInt(idString);
 		Projekt i = repository.getById(id);
 		return i;

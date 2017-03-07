@@ -13,7 +13,7 @@ app.controller('showproj', function($scope, $http,$interval) {
 	   
    },5000);
    function load_project(){
-	$http.get('http://localhost:4567/hello').
+	$http.get('http://localhost:4567/projektoverview').
         then(function(response) {
             $scope.projects = response.data;
         });
