@@ -8,7 +8,7 @@ create table projekt(
 
 create table rollen(
 idRolle int primary key auto_increment,
-Rolle_Desc Varchar(45),
+Rolle_Desc Varchar(45) not null,
 )
 ;
 
@@ -43,10 +43,9 @@ create table stakeholder(
 	idProjekt int not null,
 	idPerson int not null,
 	idRolle int not null,
-	Foreign key (idProjekt) references projekt (idProjekt)
-		on delete set null,
-Foreign key(idPerson) references person (idPerson) on delete set null,
-Foreign key(idRolle) references rollen (idRolle) on delete set null
+	Foreign key (idProjekt) references projekt (idProjekt) on delete set null,
+	Foreign key(idPerson) references person (idPerson) on delete set null,
+	Foreign key(idRolle) references rollen (idRolle) on delete set null
 )
 ;
 
@@ -76,7 +75,7 @@ on delete set null,
 create table termine(
 idTermine int primary key auto_increment,
 idTerminArt int not null,
-Termin_Start_TS int,
+Termin_Start_TS int not null,
 Termin_End_TS int,
 idProjekt int not null,
 Foreign key (idProjekt) references projekt (idProjekt)
