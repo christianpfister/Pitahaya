@@ -7,26 +7,26 @@ create table projekt(
 
 
 create table rollen(
-idRolle int primary key,
+idRolle int primary key auto_increment,
 Rolle_Desc Varchar(45),
 )
 ;
 
 create table Projektstatus(
-idProjektstatus int primary key,
+idProjektstatus int primary key auto_increment,
 Projektstatus_DESC varchar(45) not null,
 )
 ;
 
 create table TerminArt(
-idTerminArt int primary key,
+idTerminArt int primary key auto_increment,
 Termin_Title varchar(45) not null,
 Termin_DESC varchar(45),
 )
 ;
 
 create table Person(
-idPerson int primary key,
+idPerson int primary key auto_increment,
 Name varchar(45) not null,
 Vorname varchar(45) not null,
 Strasse varchar(45) not null,
@@ -39,7 +39,7 @@ idAbteilung varchar(45),
 ;
 
 create table stakeholder(
-	idStakeholder int primary key,
+	idStakeholder int primary key auto_increment,
 	idProjekt int not null,
 	idPerson int not null,
 	idRolle int not null,
@@ -51,7 +51,7 @@ Foreign key(idRolle) references rollen (idRolle) on delete set null
 ;
 
 create table projektteam(
-idProjektteam int,
+idProjektteam int not null auto_increment,
 idPerson int not null,
 idRolle int not null,
 idProjekt int not null,
@@ -62,7 +62,7 @@ on delete set null
 )
 ;
 create table projektdetails(
-idProjektdetails int primary key,
+idProjektdetails int primary key auto_increment,
 Projekt_title varchar(45) not null,
 Projekt_desc varchar(45),
 idProjektstatus int,
@@ -74,7 +74,7 @@ on delete set null,
 )
 ;
 create table termine(
-idTermine int primary key,
+idTermine int primary key auto_increment,
 idTerminArt int not null,
 Termin_Start_TS int,
 Termin_End_TS int,
