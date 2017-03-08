@@ -13,29 +13,29 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Repository für alle Teams.
- * Hier werden alle Funtkionen für die DB-Operationen zu Team implementiert.
+ * Repository für alle Stakeholder.
+ * Hier werden alle Funtkionen für die DB-Operationen zu Stakeholder implementiert.
  * @author naefp
  *
  */
 
 
-public class TeamRepository {
+public class StakeholderRepository {
 	
 	private final Logger log = LoggerFactory.getLogger(ItemRepository.class);
 	
 	/**
-	 * Liefert alle Teams in der Datenbank
+	 * Liefert alle Stakeholder in der Datenbank
 	 * @return Collection aller Items
 	 */
 
-	public Collection<Projektteam> getAll(){
+	public Collection<Stakeholder> getAll(){
 		log.trace("getAll");
 		try(Connection conn = getConnection())
 		{
 			PreparedStatement stmt = conn.prepareStatement("select * from projekt_team");
 			ResultSet rs = stmt.executeQuery();
-			return mapProjektteam(rs);		
+			return mapStakeholder(rs);		
 		}
 		catch(SQLException e)
 		{
@@ -47,12 +47,12 @@ public class TeamRepository {
 	
 
 
-	private static Collection<Projektteam> mapProjektteam(ResultSet rs) throws SQLException 
+	private static Collection<Stakeholder> mapStakeholder(ResultSet rs) throws SQLException 
 	{
-		LinkedList<Projektteam> list = new LinkedList<Projektteam>();
+		LinkedList<Stakeholder> list = new LinkedList<Stakeholder>();
 		while(rs.next())
 		{
-			Projektteam i = new Projektteam(rs.getInt("idProjektteam"),rs.getInt("idPerson"),rs.getInt("idRolle"),rs.getString("Name"),rs.getString("Vorname"),rs.getString("Strasse"), rs.getInt("Strassen_Nr"), rs.getString("Wohnort"), rs.getInt("Wohnort_PLZ"), rs.getString("idFunktion"), rs.getString("idAbteilung"));			
+			Stakeholder i = new Stakeholder(rs.getInt("idStakeholder"),rs.getString("Rolle_Desc"));			
 		
 			
 			list.add(i);
