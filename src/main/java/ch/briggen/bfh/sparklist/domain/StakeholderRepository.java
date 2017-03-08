@@ -33,7 +33,7 @@ public class StakeholderRepository {
 		log.trace("getAll");
 		try(Connection conn = getConnection())
 		{
-			PreparedStatement stmt = conn.prepareStatement("select * from projekt_team");
+			PreparedStatement stmt = conn.prepareStatement("select * from projekt_stakeholder");
 			ResultSet rs = stmt.executeQuery();
 			return mapStakeholder(rs);		
 		}
