@@ -9,7 +9,7 @@ app.controller('showproj', function($scope, $http,$interval) {
    $scope.reverse = false;
    $interval(function(){
 	   load_project();
-   },100000);
+   },5000);
    function load_project(){
 
 	$http.get('http://localhost:4567/projektoverview').

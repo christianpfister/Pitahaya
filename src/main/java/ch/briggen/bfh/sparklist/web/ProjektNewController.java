@@ -53,10 +53,10 @@ public class ProjektNewController implements Route{
 		
 		Projekt projektNew = gson.fromJson(request.body(), Projekt.class);
 
-		log.trace("POST /item/new mit projektNew " + projektNew);
+		log.trace("POST /projektnew mit " + projektNew);
 		
 		//insert gibt die von der DB erstellte id zurück.
-		projektRepo.insert(projektNew);
+		projektRepo.insertTest(projektNew);
 		
 		//die neue Id wird dem Redirect als Parameter hinzugefügt
 		//der redirect erfolgt dann auf /item?id=432932

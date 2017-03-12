@@ -1,7 +1,8 @@
-DROP SCHEMA PUBLIC CASCADE
+DROP ALL OBJECTS
 ;
 create table projekt(
-	idProjekt int primary key,
+	idProjekt int primary key auto_increment,
+	create_TS timestamp default now(),
 )
 ;
 
