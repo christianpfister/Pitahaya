@@ -33,25 +33,16 @@ app.controller("newproject", ['$scope', '$http', function($scope, $http) {
 
     $scope.addnewproject = function(){             
 
-           $scope.message ="schade";
 
             // Writing it to the server
 
             //              
 
-            var dataObj = {
-
-                              idProjekt : $scope.idProjekt,
-
+            var dataObj = {        
                               Projekt_TITLE : $scope.Projekt_TITLE,
 
                               Projekt_DESC : $scope.Projekt_DESC,
-                              
-                              idProjektstatus : $scope.idProjektstatus,
-                              
-                              Projektstatus_DESC : $scope.Projektstatus_DESC
-                              
-
+                                              
             };      
 
             var res = $http.post('/newprojekt', dataObj);
@@ -72,12 +63,11 @@ app.controller("newproject", ['$scope', '$http', function($scope, $http) {
 
             //
 
-            $scope.name='';
+            $scope.Projekt_TITLE='';
 
-            $scope.employees='';
+            $scope.Projekt_DESC='';
 
-            $scope.headoffice='';
-
+           
     };
 
 }]);
