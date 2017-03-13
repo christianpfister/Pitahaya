@@ -42,10 +42,6 @@
      
      
      
-     
-     
-     
-     
       <div data-ng-include="'newprojekt.html'"></div>
   			
       
@@ -67,7 +63,7 @@
 
 			<div data-ng-controller="showproj" >
 			
-			<table class="table">
+			<table data-ng-controller="projektedit" class="table">
 			 <tr>
 		      <th>
 		        <a data-ng-click="sortBy('idProjekt')">ProjectID:</a>
@@ -93,8 +89,8 @@
 			    <td>{{projects.idProjekt}}</td>
 			    <td>{{projects.Projekt_TITLE}}</td>
 			    <td>{{projects.Projekt_DESC}}</td>
-			    <td><a data-ng-href="#/edit/{{project.$id}}"><i class="glyphicon glyphicon-pencil" aria-hidden="true"></i></a></td>
-			    <td><a data-ng-href="#/edit/{{project.$id}}"><i class="glyphicon glyphicon-trash" aria-hidden="true"></i></a></td>
+			    <td><a data-ng-click=""><i class="glyphicon glyphicon-pencil" aria-hidden="true"></i></a></td>
+			    <td><span data-ng-click="deleteprojekt(projects.idProjekt)"><i class="glyphicon glyphicon-trash" aria-hidden="true"></i></span></td>
 			  </tr>
 			</table>
 			</div>

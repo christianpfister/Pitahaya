@@ -9,7 +9,7 @@ app.controller('showproj', function($scope, $http,$interval) {
    $scope.reverse = false;
    $interval(function(){
 	   load_project();
-   },5000);
+   },10000);
    function load_project(){
 
 	$http.get('http://localhost:4567/projektoverview').
@@ -27,13 +27,11 @@ app.controller('showproj', function($scope, $http,$interval) {
 });
 
 
-app.controller("newproject", ['$scope', '$http', function($scope, $http) {
+app.controller("projektedit", ['$scope', '$http', function($scope, $http) {
 
  
 
     $scope.addnewproject = function(){             
-
-
             // Writing it to the server
 
             //              
@@ -61,14 +59,45 @@ app.controller("newproject", ['$scope', '$http', function($scope, $http) {
 
             // Making the fields empty
 
-            //
-
+            //          
             $scope.Projekt_TITLE='';
 
             $scope.Projekt_DESC='';
-
-           
     };
+    
+    $scope.deleteprojekt = function(test){             
+        // Writing it to the server
+
+        //         
+   
+    $scope.test = test;
+
+        var dataObj = {        
+                          idProjekt : $scope.test,
+
+                                          
+        };      
+
+        var res = $http.post('/deleteProjekt', dataObj);
+
+        res.success(function(data, status, headers, config) {
+
+                 $scope.message = data;
+
+        });
+
+        res.error(function(data, status, headers, config) {
+
+                 alert( "failure message: " + JSON.stringify({data: data}));
+
+        });             
+
+        // Making the fields empty
+
+        //          
+      
+};
+    
 
 }]);
 
