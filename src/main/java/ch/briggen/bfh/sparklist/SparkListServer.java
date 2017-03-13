@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import ch.briggen.bfh.sparklist.web.DbSchemaListController;
 import ch.briggen.bfh.sparklist.web.GetNameController;
+import ch.briggen.bfh.sparklist.web.ProjektDeleteController;
 import ch.briggen.bfh.sparklist.web.ProjektDetailController;
 import ch.briggen.bfh.sparklist.web.ProjektManagementRootController;
 import ch.briggen.bfh.sparklist.web.ProjektNewController;
@@ -38,9 +39,10 @@ public class SparkListServer extends H2SparkApp {
     	
 
     	get("/projektoverview", new ProjektManagementRootController(),jsonEngine::toJson);
-    	get("/projektoverviewid", new ProjektDetailController(), jsonEngine::toJson);
+    	get("/editProjekt", new ProjektDetailController(), jsonEngine::toJson);
     	
     	post("/newprojekt", new ProjektNewController(), null);
+    	post("deleteProjekt", new ProjektDeleteController(),null);
 
     	
 

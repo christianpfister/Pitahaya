@@ -11,7 +11,7 @@ import spark.Route;
 
 /**
  * WWW-Controller
- * Liefert unter "/projektoverviewid" das Projekt mit der aufgerufenen ID
+ * Liefert unter "/editProjekt" das Projekt mit der aufgerufenen ID
  * 
  * !!! Diese Version verfügt bewusst über keine Validierung / Fehlerbehandlung !!!
  * 

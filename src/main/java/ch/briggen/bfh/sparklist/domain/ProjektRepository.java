@@ -66,22 +66,24 @@ public class ProjektRepository {
 		}
 	}
 	
-	/**Test Insert Projekt
+	/**Insert Projekt
+	 * Fügt ein Projekt in der DB hinzu.
+	 * @status setzt den Status eines neuen Projekts per Default auf 0
 	 */
 	public void insertTest(Projekt i){
 		log.trace("insert" + i.toString());
 		Integer id = 0;
+		Integer status = 0;
 		
-		
+		//Projekt mit TS in DB schreiben
 		try(Connection conn = getConnection())
 		{
 			PreparedStatement stmt = conn.prepareStatement("insert into projekt (Create_TS) values (DEFAULT)");
-			//stmt.setInt(1, id);
 			stmt.executeUpdate();
 			ResultSet key = stmt.getGeneratedKeys();
 			key.next();
 			id = key.getInt(1);
-			log.trace("Neuer Schlüssel" + id.toString());
+			log.trace("Neuer Schlüssel " + id.toString());
 		}
 		catch(SQLException e)
 		{
@@ -96,12 +98,9 @@ public class ProjektRepository {
 			PreparedStatement stmt = conn.prepareStatement("insert into projektdetails (Projekt_TITLE,Projekt_DESC,idProjektstatus,idProjekt) values (?,?,?,?)");
 			stmt.setString(1, i.getProjekt_TITLE());
 			stmt.setString(2, i.getProjekt_DESC());
-			stmt.setInt(3, 0);
+			stmt.setInt(3, status);
 			stmt.setInt(4, id);
 			stmt.executeUpdate();
-			ResultSet key = stmt.getGeneratedKeys();
-			key.next();
-			id = key.getInt(1);
 		}
 		catch(SQLException e)
 		{
@@ -111,53 +110,28 @@ public class ProjektRepository {
 		}		
 	}
 	
-	/**
-	 * Legt ein neues Projekt an
-	 * @param i ist ein Objekt Projekt
-	 * 
-	 */
-	public void insert(Projekt i){
-		log.trace("insert" + i.toString());
-		int id = 0;
-		
-		//Projektedetails in DB schreiben
+	public void deleteProjekt (Integer idProjekt){
 		try(Connection conn = getConnection())
 		{
-			PreparedStatement stmt = conn.prepareStatement("insert into projektdetails (Projekt_TITLE,Projekt_DESC,idProjektstatus,idProjekt) values (?,?,?,?)");
-			stmt.setString(1, i.getProjekt_TITLE());
-			stmt.setString(2, i.getProjekt_DESC());
-			stmt.setInt(3, 0);
-			stmt.setInt(4, i.getIdProjekt());
-			stmt.executeUpdate();
-			ResultSet key = stmt.getGeneratedKeys();
-			key.next();
-			id = key.getInt(1);
-		}
-		catch(SQLException e)
-		{
-			String msg = "SQL error while updating item " + i;
-			log.error(msg , e);
-			throw new RepositoryException(msg);
-		}		
-		
-		
-		
-		
-		//Projekt Id in DB schreiben
-		
-		try(Connection conn = getConnection())
-		{
-			PreparedStatement stmt = conn.prepareStatement("insert into projekt (idProjekt) values (?)");
-			stmt.setInt(1, id);
+			PreparedStatement stmt = conn.prepareStatement("delete from projekt where (idProjekt) = (?)");
+			stmt.setInt(1, idProjekt);
 			stmt.executeUpdate();
 		}
 		catch(SQLException e)
 		{
-			String msg = "SQL error while updating item " + i;
+			String msg = "SQL error while updating item " + idProjekt;
 			log.error(msg , e);
 			throw new RepositoryException(msg);
 		}
+		
 	}
+	
+	/**
+	 * Mappt die Resultate einer Query auf das Objekt Projekt
+	 * @param rs enthält das ResulSet der Query
+	 * @return gib die Projekte als Collection zurück
+	 * @throws SQLException
+	 */
 	private static Collection<Projekt> mapProjekt(ResultSet rs) throws SQLException 
 	{
 		LinkedList<Projekt> list = new LinkedList<Projekt>();

@@ -37,15 +37,6 @@ public class Projekt {
 	public Projekt(String Projekt_TTITLE, String Projekt_DESC, String Projektstatus_DESC) {
 		this.Projekt_TITLE = Projekt_TITLE;
 		this.Projekt_DESC = Projekt_DESC;
-		this.Projektstatus_DESC = Projektstatus_DESC;
-	}
-	
-	public Projekt(int idProjekt, String projekt_TITEL, String Projekt_DESC, int idProjektstatus, String Projektstatus_DESC){
-		this.idProjekt = idProjekt;
-		this.Projekt_TITLE = projekt_TITEL;
-		this.Projekt_DESC = Projekt_DESC;
-		this.idProjektstatus = idProjektstatus;
-		this.Projektstatus_DESC = Projektstatus_DESC;
 	}
 
 	public int getIdProjekt() {

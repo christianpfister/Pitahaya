@@ -38,11 +38,11 @@ public class ProjektNewController implements Route{
 	
 	/**
 	 * Erstellt ein neues Item in der DB. Die id wird von der Datenbank erstellt.
-	 * Bei Erfolg wird wieder auf die Detailseite redirected (z.B.: /item&id=99  wenn die id 99 war.)
+	 * Bei Erfolg wird wieder nachm dem Auto Refresh der Projektoverview, dass neue Projekt angezeigt
 	 * 
 	 * Hört auf POST /item/new
 	 * 
-	 * @return Redirect zurück zur Startmaske
+	 * @return Null
 	 */	
 	@Override
 	public Object handle( Request request, Response response) throws Exception {
@@ -53,14 +53,10 @@ public class ProjektNewController implements Route{
 		
 		Projekt projektNew = gson.fromJson(request.body(), Projekt.class);
 
-		log.trace("POST /projektnew mit " + projektNew);
 		
 		//insert gibt die von der DB erstellte id zurück.
 		projektRepo.insertTest(projektNew);
-		
-		//die neue Id wird dem Redirect als Parameter hinzugefügt
-		//der redirect erfolgt dann auf /item?id=432932
-		response.redirect("/projektoverview");
+
 		return new ModelAndView(null, null);
 	}
 }
