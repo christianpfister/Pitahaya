@@ -13,20 +13,22 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
   <!-- Include all compiled plugins (below), or include individual files as needed -->   
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="projektoverview.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="projektoverview.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-chart/0.1.0/ng-google-chart.js" type="text/javascript"></script>
   
 </head>
-<body>
+<body data-ng-controller="projektoverview">
 
 <!-- Navigation -->
 <div data-ng-include="'navbar.html'"></div>
   
 <div class="container-fluid text-center">    
   <div class="row content">
+    
+    
     <div class="col-sm-2 sidenav">
      
     </div>
@@ -37,12 +39,41 @@
       
 
       
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
      
      
+    <div>
+   <p></p>
+   <hr>
+   <h3>neues Projekt erstellen:</h3>
+  <div class="container">
+ 
+  <form class="form-horizontal" data-ng-submit="addnewproject()">
+ 
+   
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="projectname">Projektname:</label>
+      <div class="col-sm-6">
+        <input type="text" autocomplete="off" class="form-control" data-ng-model="Projekt_TITLE" id="projectname" placeholder="Projektname eingeben.">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="projectdescription">Beschreibung:</label>
+      <div class="col-sm-6">          
+        <input type="text" autocomplete="off" class="form-control" data-ng-model="Projekt_DESC" id="projectdescription" placeholder="Projektbeschreibung eingeben">
+      </div>
+    </div>
      
+    
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-6">
+        <button type="submit" class="btn btn-default" data-ng-click="myFunc()">speichern <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
+      </div>
+    </div>
+    
+  </form>
+</div>
      
-      <div data-ng-include="'newprojekt.html'"></div>
   			
       
       
@@ -61,7 +92,7 @@
      </form>
      
 
-			<div data-ng-controller="showproj" >
+			
 			
 			<table class="table">
 			 <tr>
@@ -93,7 +124,13 @@
 			    <td><span data-ng-click="deleteprojekt(projects.idProjekt)"><i class="glyphicon glyphicon-trash" aria-hidden="true"></i></span></td>
 			  </tr>
 			</table>
-			</div>
+			
+
+
+<div>
+<p></p>
+</div>
+</div>
 
 
 
@@ -103,7 +140,7 @@
 
     </div>
     <div class="col-sm-2 sidenav">
-     
+    
     </div>
   </div>
 </div>

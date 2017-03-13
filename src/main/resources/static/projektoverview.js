@@ -1,7 +1,7 @@
 var app = angular.module('myproj', []);
 
 
-app.controller('showproj', function($scope, $http,$interval) {
+app.controller('projektoverview', function($scope, $http, $interval) {
    load_project();
   
    $scope.propertyName = 'idProjekt';
@@ -9,54 +9,41 @@ app.controller('showproj', function($scope, $http,$interval) {
    $scope.reverse = false;
    $interval(function(){
 	   load_project();
-   },10000);
-   function load_project(){
+   },100000);
+   		function load_project(){
 
-	$http.get('http://localhost:4567/projektoverview').
-        then(function(response) {
+	    $http.get('http://localhost:4567/projektoverview').
+	   		then(function(response) {
             $scope.projects = response.data;
-        });
-   };
+	   		});
+   		};
    
-   $scope.sortBy = function (propertyName) {
-	    $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
-	    $scope.propertyName = propertyName;
-	  };
+   		$scope.sortBy = function (propertyName) {
+	   		$scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+	   		$scope.propertyName = propertyName;
+   		};
 
-	    $scope.addnewproject = function(){             
+	  	$scope.addnewproject = function(){             
 	            // Writing it to the server
-
-	            //              
-
 	            var dataObj = {        
 	                              Projekt_TITLE : $scope.Projekt_TITLE,
-
-	                              Projekt_DESC : $scope.Projekt_DESC,
-	                                              
+	                              Projekt_DESC : $scope.Projekt_DESC,                                
 	            };      
 
 	            var res = $http.post('/newprojekt', dataObj);
 
 	            res.success(function(data, status, headers, config) {
-	            		 $scope.projects = response.data;
-	                     $scope.message = data;
-
+	            	 $scope.projects = data;
+	            	 $scope.message = data;
 	            });
 
 	            res.error(function(data, status, headers, config) {
-
 	                     alert( "failure message: " + JSON.stringify({data: data}));
-
 	            });             
 
-	            // Making the fields empty
-
-	            //          
+	            // Making the fields empty         
 	            $scope.Projekt_TITLE='';
-
 	            $scope.Projekt_DESC='';
-	            
-	            
 	    };
 
 	    
@@ -65,44 +52,23 @@ app.controller('showproj', function($scope, $http,$interval) {
 	    $scope.deleteprojekt = function(test){             
 	        // Writing it to the server
 
-	        //         
-	   
-	    $scope.test = test;
+	    	$scope.test = test;
 
 	        var dataObj = {        
-	                          idProjekt : $scope.test,
-
-	                                          
+	                          idProjekt : $scope.test,                                  
 	        };      
 
 	        var res = $http.post('/deleteProjekt', dataObj);
 
 	        res.success(function(data, status, headers, config) {
-	        		 $scope.projects = response.data;
-	                 $scope.message = data;
-
+	        		 $scope.projects = data;       
 	        });
 
 	        res.error(function(data, status, headers, config) {
-
 	                 alert( "failure message: " + JSON.stringify({data: data}));
-
-	        });             
-
-	        // Making the fields empty
-
-	        //          
-	      
-	};
+	        });             	      
+	    };
 });
 
 
-
-
-app.controller('showctrl', function($scope) {
-    $scope.showMe = false;
-    $scope.myFunc = function() {
-        $scope.showMe = !$scope.showMe;
-    }
-});
 
