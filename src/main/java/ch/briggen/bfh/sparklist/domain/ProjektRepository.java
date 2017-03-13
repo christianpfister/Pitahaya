@@ -110,16 +110,19 @@ public class ProjektRepository {
 		}		
 	}
 	
-	public void deleteProjekt (Integer idProjekt){
+	public void deleteProjekt (Projekt i){
+		
+		log.trace("löschen des Projekts " + i.getIdProjekt());
 		try(Connection conn = getConnection())
 		{
-			PreparedStatement stmt = conn.prepareStatement("delete from projekt where (idProjekt) = (?)");
-			stmt.setInt(1, idProjekt);
+			PreparedStatement stmt = conn.prepareStatement("update projekt set projekt_active = (?) where idprojekt = (?)");
+			stmt.setBoolean(1, false);
+			stmt.setInt(2, i.getIdProjekt());
 			stmt.executeUpdate();
 		}
 		catch(SQLException e)
 		{
-			String msg = "SQL error while updating item " + idProjekt;
+			String msg = "SQL error while updating item " + i;
 			log.error(msg , e);
 			throw new RepositoryException(msg);
 		}

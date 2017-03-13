@@ -17,12 +17,19 @@ public class ProjektDeleteController implements Route{
 	ProjektRepository projektRepo = new ProjektRepository();
 	private final Gson jsonParser = new Gson();
 
+	
+	/**
+	 * Löscht das Projekt anhand der idProjekt in der DB
+	 */
 	@Override
 	public Object handle(Request request, Response response) throws Exception {
-		log.trace("POST /item/new mit projektNew " + request.body());
 		
-		Integer i = jsonParser.fromJson(request.body(), Integer.class);
+		log.trace("Projekt löschen mit ID " + request.queryParams("idProjekt"));
+		
+		Projekt i = jsonParser.fromJson(request.body(), Projekt.class);
+		log.trace("Projekt löschen mit ID " + i.getIdProjekt());
 		projektRepo.deleteProjekt(i);
+		
 		return null;
 	}
 

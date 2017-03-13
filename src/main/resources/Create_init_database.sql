@@ -2,6 +2,7 @@ DROP ALL OBJECTS
 ;
 create table projekt(
 	idProjekt int primary key auto_increment,
+	projekt_active boolean default true not null,
 	create_TS timestamp default now(),
 )
 ;
@@ -101,6 +102,9 @@ ON pro.idprojekt = det.idprojekt
 
 JOIN projektstatus stat
 ON det.idprojektstatus = stat.idprojektstatus
+
+WHERE
+	pro.projekt_active = true
 ;
 CREATE VIEW projekt_team AS
 SELECT

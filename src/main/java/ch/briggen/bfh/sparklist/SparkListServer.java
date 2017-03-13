@@ -41,8 +41,8 @@ public class SparkListServer extends H2SparkApp {
     	get("/projektoverview", new ProjektManagementRootController(),jsonEngine::toJson);
     	get("/editProjekt", new ProjektDetailController(), jsonEngine::toJson);
     	
-    	post("/newprojekt", new ProjektNewController(), null);
-    	post("/deleteProjekt", new ProjektDeleteController(),null);
+    	post("/newprojekt", new ProjektNewController(), jsonEngine::toJson);
+    	post("/deleteProjekt", new ProjektDeleteController(),jsonEngine::toJson);
 
     	
 
