@@ -23,83 +23,80 @@ app.controller('showproj', function($scope, $http,$interval) {
 	    $scope.propertyName = propertyName;
 	  };
 
+	    $scope.addnewproject = function(){             
+	            // Writing it to the server
 
+	            //              
+
+	            var dataObj = {        
+	                              Projekt_TITLE : $scope.Projekt_TITLE,
+
+	                              Projekt_DESC : $scope.Projekt_DESC,
+	                                              
+	            };      
+
+	            var res = $http.post('/newprojekt', dataObj);
+
+	            res.success(function(data, status, headers, config) {
+	            		 $scope.projects = response.data;
+	                     $scope.message = data;
+
+	            });
+
+	            res.error(function(data, status, headers, config) {
+
+	                     alert( "failure message: " + JSON.stringify({data: data}));
+
+	            });             
+
+	            // Making the fields empty
+
+	            //          
+	            $scope.Projekt_TITLE='';
+
+	            $scope.Projekt_DESC='';
+	            
+	            
+	    };
+
+	    
+	    
+	    
+	    $scope.deleteprojekt = function(test){             
+	        // Writing it to the server
+
+	        //         
+	   
+	    $scope.test = test;
+
+	        var dataObj = {        
+	                          idProjekt : $scope.test,
+
+	                                          
+	        };      
+
+	        var res = $http.post('/deleteProjekt', dataObj);
+
+	        res.success(function(data, status, headers, config) {
+	        		 $scope.projects = response.data;
+	                 $scope.message = data;
+
+	        });
+
+	        res.error(function(data, status, headers, config) {
+
+	                 alert( "failure message: " + JSON.stringify({data: data}));
+
+	        });             
+
+	        // Making the fields empty
+
+	        //          
+	      
+	};
 });
 
 
-app.controller("projektedit", ['$scope', '$http', function($scope, $http) {
-
- 
-
-    $scope.addnewproject = function(){             
-            // Writing it to the server
-
-            //              
-
-            var dataObj = {        
-                              Projekt_TITLE : $scope.Projekt_TITLE,
-
-                              Projekt_DESC : $scope.Projekt_DESC,
-                                              
-            };      
-
-            var res = $http.post('/newprojekt', dataObj);
-
-            res.success(function(data, status, headers, config) {
-
-                     $scope.message = data;
-
-            });
-
-            res.error(function(data, status, headers, config) {
-
-                     alert( "failure message: " + JSON.stringify({data: data}));
-
-            });             
-
-            // Making the fields empty
-
-            //          
-            $scope.Projekt_TITLE='';
-
-            $scope.Projekt_DESC='';
-    };
-    
-    $scope.deleteprojekt = function(test){             
-        // Writing it to the server
-
-        //         
-   
-    $scope.test = test;
-
-        var dataObj = {        
-                          idProjekt : $scope.test,
-
-                                          
-        };      
-
-        var res = $http.post('/deleteProjekt', dataObj);
-
-        res.success(function(data, status, headers, config) {
-
-                 $scope.message = data;
-
-        });
-
-        res.error(function(data, status, headers, config) {
-
-                 alert( "failure message: " + JSON.stringify({data: data}));
-
-        });             
-
-        // Making the fields empty
-
-        //          
-      
-};
-    
-
-}]);
 
 
 app.controller('showctrl', function($scope) {
