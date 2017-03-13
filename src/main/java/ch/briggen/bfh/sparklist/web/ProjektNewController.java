@@ -42,7 +42,7 @@ public class ProjektNewController implements Route{
 	 * 
 	 * Hört auf POST /item/new
 	 * 
-	 * @return Null
+	 * @return ProjektOverview
 	 */	
 	@Override
 	public Object handle( Request request, Response response) throws Exception {
@@ -57,7 +57,7 @@ public class ProjektNewController implements Route{
 		//insert gibt die von der DB erstellte id zurück.
 		projektRepo.insertTest(projektNew);
 
-		return new ModelAndView(null, null);
+		return projektRepo.getAll();
 	}
 }
 

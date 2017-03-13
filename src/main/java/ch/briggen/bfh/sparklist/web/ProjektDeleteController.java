@@ -19,7 +19,7 @@ public class ProjektDeleteController implements Route{
 
 	
 	/**
-	 * Löscht das Projekt anhand der idProjekt in der DB
+	 * Löscht das Projekt anhand der idProjekt in der DB und gibt die ProjektOverview zurück
 	 */
 	@Override
 	public Object handle(Request request, Response response) throws Exception {
@@ -30,7 +30,7 @@ public class ProjektDeleteController implements Route{
 		log.trace("Projekt löschen mit ID " + i.getIdProjekt());
 		projektRepo.deleteProjekt(i);
 		
-		return null;
+		return projektRepo.getAll();
 	}
 
 }

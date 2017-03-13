@@ -41,6 +41,6 @@ public class ProjektManagementRootController implements Route {
 		//Projekte werden geladen und die Collection dann für das Template unter dem namen "projekt" bereitgestellt
 		//Das Template muss dann auch den Namen "projekt" verwenden.
 		log.trace("getAll from /projektoverview");
-		return new ProjektRepository().getAll();
+		return repository.getAll();
 	}
 }

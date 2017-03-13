@@ -144,3 +144,4 @@ ON stak.idrolle = rol.idrolle
 JOIN person pers
 ON stak.idperson = pers.idperson
 ;
+
