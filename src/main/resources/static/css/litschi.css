@@ -16,7 +16,9 @@
       height: 100%;
     }
     
- 
+  .navbar-brand {
+      padding: 5px 15px;
+    }
     
     /* Set black background color, white text and some padding */
     footer {
@@ -35,10 +37,10 @@
     }
     
 .sortorder:after {
-  content: '\25bc';   // BLACK UP-POINTING TRIANGLE
+  content: ' \21D3';   // BLACK DOWN-POINTING TRIANGLE
 }
 .sortorder.reverse:after {
-  content: '\25b2';   // BLACK DOWN-POINTING TRIANGLE
+  content: ' \21D1';   // BLACK UP-POINTING TRIANGLE
 } 
     
 </style>

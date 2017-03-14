@@ -10,33 +10,33 @@
    <p></p>
    <hr>
    <h3>neues Projekt erstellen:</h3>
-  <div class="container">
+  
  
   <form class="form-horizontal" data-ng-submit="addnewproject()">
  
    
     <div class="form-group">
-      <label class="control-label col-sm-2" for="projectname">Projektname:</label>
-      <div class="col-sm-6">
+      <label class="control-label col-sm-3" for="projectname">Projektname:</label>
+      <div class="col-sm-8">
         <input type="text" autocomplete="off" class="form-control" data-ng-model="Projekt_TITLE"  id="projectname" placeholder="Projektname eingeben.">
       </div>
     </div>
     <div class="form-group">
-      <label class="control-label col-sm-2" for="projectdescription">Beschreibung:</label>
-      <div class="col-sm-6">          
+      <label class="control-label col-sm-3" for="projectdescription">Beschreibung:</label>
+      <div class="col-sm-8">          
         <input type="text" autocomplete="off" class="form-control" data-ng-model="Projekt_DESC" id="projectdescription" placeholder="Projektbeschreibung eingeben">
       </div>
     </div>
      
     
     <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-6">
+      <div class="col-sm-offset-3 col-sm-8">
         <button type="submit" class="btn btn-default" data-ng-click="myFunc()">speichern <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
       </div>
     </div>
     
   </form>
-</div>
+
      
   			
       
@@ -47,8 +47,8 @@
  
   <form class="form-horizontal">
      <div class="form-group">
-      <label class="control-label col-sm-2" for="projectname">Suche:</label>
-      <div class="col-sm-6">
+      <label class="control-label col-sm-3" for="projectname">Suche:</label>
+      <div class="col-sm-8">
         <input type="text" autocomplete="off" class="form-control" data-ng-model="Project_TITLE"  placeholder="Projektname eingeben."></input>
       </div>
     </div>
@@ -61,20 +61,22 @@
 			<table class="table">
 			 <tr>
 		      <th>
-		        <a data-ng-click="sortBy('idProjekt')">ProjectID:</a>
+		        <span data-ng-click="sortBy('idProjekt')">ProjectID </span>
 		       <span class="sortorder" data-ng-show="propertyName === 'idProjekt'" data-ng-class="{reverse: reverse}"></span>
 		      </th>
 		      <th>
-		        <a data-ng-click="sortBy('Projekt_TITLE')">Projekttitel:</a>
+		        <span data-ng-click="sortBy('Projekt_TITLE')">Projekttitel </span>
 		        <span class="sortorder" data-ng-show="propertyName === 'Projekt_TITLE'" data-ng-class="{reverse: reverse}"></span>
 		      </th>
 		      <th>
-		        <a data-ng-click="sortBy('Projekt_DESC')">Projektbeschreibung:</a>
+		        <span data-ng-click="sortBy('Projekt_DESC')">Projektbeschreibung </span>
 		        <span class="sortorder" data-ng-show="propertyName === 'Projekt_DESC'" data-ng-class="{reverse: reverse}"></span>
 		      </th>
 		      <th>
+		      
 		      </th>
 		      <th>
+		      
 		      </th>
 		    </tr>
 			
@@ -90,8 +92,29 @@
 			  </tr>
 			  
 			  <tr data-ng-show="showme">
-			  <td colspan=5><h1>jjj</h1><td>
-			  </tr>
+			  <td colspan=5>
+<form class="form-horizontal">
+<div class="form-group">
+<label class="control-label col-sm-3" for="email">Projektname:</label>
+<div class="col-sm-8">
+<input type="text" class="form-control" id="email" value={{projects.Projekt_TITLE}} placeholder="Enter email">
+</div>
+</div>
+<div class="form-group">
+<label class="control-label col-sm-3" for="pwd">Beschreibung:</label>
+<div class="col-sm-8"> 
+<input type="text" class="form-control" id="pwd" value={{projects.Projekt_DESC}} placeholder="Enter password">
+</div>
+</div>
+
+<div class="form-group"> 
+<div class="col-sm-offset-3 col-sm-8">
+<button type="submit" data-ng-click="showme=false" class="btn btn-default">Submit</button>
+</div>
+</div>
+</form>
+</td>
+</tr>
 			 
 			 </tbody>
 			</table>
