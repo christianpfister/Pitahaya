@@ -1,20 +1,42 @@
-var app = angular.module('myproj', []);
+var app = angular.module('myproj', ["ngRoute"]);
 
+app.config(function($routeProvider) {
+	  $routeProvider
+	  .when("/", {
+	    templateUrl : "projektoverview.html",
+		controller : "projektoverview"
 
+		
+	  })
+	  .when("/red", {
+	    template : "<h1>bullshit<h1>"
+	  })
+	  .when("/green", {
+	    templateUrl : ""
+	  })
+	  .when("/blue", {
+	    templateUrl : ""
+	  });
+	});
+
+//Projektübersicht Controller
 app.controller('projektoverview', function($scope, $http, $interval) {
    load_project();
   
    $scope.propertyName = 'idProjekt';
   
    $scope.reverse = false;
+   //Interval Funktion um die Projektübersicht zu aktualisieren
    $interval(function(){
 	   load_project();
-   },100000);
+   },50000);
+   		//get Projektoverview von Spark
    		function load_project(){
 
 	    $http.get('http://localhost:4567/projektoverview').
 	   		then(function(response) {
-            $scope.projects = response.data;
+	   			//Objekt mit Projekten
+	   			$scope.projects = response.data;
 	   		});
    		};
    
@@ -23,8 +45,9 @@ app.controller('projektoverview', function($scope, $http, $interval) {
 	   		$scope.propertyName = propertyName;
    		};
 
+   		// Writing New Projekt to Spark
 	  	$scope.addnewproject = function(){             
-	            // Writing it to the server
+	         
 	            var dataObj = {        
 	                              Projekt_TITLE : $scope.Projekt_TITLE,
 	                              Projekt_DESC : $scope.Projekt_DESC,                                
@@ -33,7 +56,9 @@ app.controller('projektoverview', function($scope, $http, $interval) {
 	            var res = $http.post('/newprojekt', dataObj);
 
 	            res.success(function(data, status, headers, config) {
+	            	 //Objiekt mit Projekten aktualisieren nach Insert
 	            	 $scope.projects = data;
+	            	 //Erfolgsmeldung
 	            	 $scope.message = data;
 	            });
 
@@ -48,20 +73,22 @@ app.controller('projektoverview', function($scope, $http, $interval) {
 
 	    
 	    
-	    
-	    $scope.deleteprojekt = function(test){             
-	        // Writing it to the server
+	    // Projekt löschen mittels ProjektID
+	    $scope.deleteprojekt = function(projektid){             
 
-	    	$scope.test = test;
+	    	$scope.id = projektid;
 
 	        var dataObj = {        
-	                          idProjekt : $scope.test,                                  
+	                          idProjekt : $scope.id,                                  
 	        };      
 
 	        var res = $http.post('/deleteProjekt', dataObj);
 
 	        res.success(function(data, status, headers, config) {
-	        		 $scope.projects = data;       
+	        	 	//Objiekt mit Projekten aktualisieren nach Delete
+	        		$scope.projects = data;  
+	        		//Erfolgsmeldung
+	        		$scope.message = '';
 	        });
 
 	        res.error(function(data, status, headers, config) {

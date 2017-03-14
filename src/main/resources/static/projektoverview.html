@@ -1,0 +1,105 @@
+<div>
+      <h1>Projektportfoliomanagement</h1>
+      
+
+      
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+     
+     
+    <div>
+   <p></p>
+   <hr>
+   <h3>neues Projekt erstellen:</h3>
+  <div class="container">
+ 
+  <form class="form-horizontal" data-ng-submit="addnewproject()">
+ 
+   
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="projectname">Projektname:</label>
+      <div class="col-sm-6">
+        <input type="text" autocomplete="off" class="form-control" data-ng-model="Projekt_TITLE"  id="projectname" placeholder="Projektname eingeben.">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="projectdescription">Beschreibung:</label>
+      <div class="col-sm-6">          
+        <input type="text" autocomplete="off" class="form-control" data-ng-model="Projekt_DESC" id="projectdescription" placeholder="Projektbeschreibung eingeben">
+      </div>
+    </div>
+     
+    
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-6">
+        <button type="submit" class="btn btn-default" data-ng-click="myFunc()">speichern <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
+      </div>
+    </div>
+    
+  </form>
+</div>
+     
+  			
+      
+      
+      <hr>
+      <h3>Projektpipeline</h3>
+    
+ 
+  <form class="form-horizontal">
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="projectname">Suche:</label>
+      <div class="col-sm-6">
+        <input type="text" autocomplete="off" class="form-control" data-ng-model="Project_TITLE"  placeholder="Projektname eingeben."></input>
+      </div>
+    </div>
+     <p></p>
+     </form>
+     
+
+			
+			
+			<table class="table">
+			 <tr>
+		      <th>
+		        <a data-ng-click="sortBy('idProjekt')">ProjectID:</a>
+		       <span class="sortorder" data-ng-show="propertyName === 'idProjekt'" data-ng-class="{reverse: reverse}"></span>
+		      </th>
+		      <th>
+		        <a data-ng-click="sortBy('Projekt_TITLE')">Projekttitel:</a>
+		        <span class="sortorder" data-ng-show="propertyName === 'Projekt_TITLE'" data-ng-class="{reverse: reverse}"></span>
+		      </th>
+		      <th>
+		        <a data-ng-click="sortBy('Projekt_DESC')">Projektbeschreibung:</a>
+		        <span class="sortorder" data-ng-show="propertyName === 'Projekt_DESC'" data-ng-class="{reverse: reverse}"></span>
+		      </th>
+		      <th>
+		      </th>
+		      <th>
+		      </th>
+		    </tr>
+			
+			
+			<tbody data-ng-app="ngAnimate" data-ng-repeat="projects in projects | orderBy:propertyName:reverse | filter:Project_TITLE">
+			  <tr>
+			    <td>{{projects.idProjekt}}</td>
+			    <td>{{projects.Projekt_TITLE}}</td>
+			    <td>{{projects.Projekt_DESC}}</td>
+			    <td><span data-ng-click="showme=true"><i class="glyphicon glyphicon-pencil" aria-hidden="true"></i></span></td>
+			    <td><span data-ng-click="deleteprojekt(projects.idProjekt)"><i class="glyphicon glyphicon-trash" aria-hidden="true"></i></span></td>
+			
+			  </tr>
+			  
+			  <tr data-ng-show="showme">
+			  <td colspan=5><h1>jjj</h1><td>
+			  </tr>
+			 
+			 </tbody>
+			</table>
+			
+
+
+<div>
+<p></p>
+</div>
+</div>
+</div>
