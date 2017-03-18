@@ -15,7 +15,7 @@ insert into projektstatus (projektstatus_desc) values ('Abgelehnt');
 insert into projektstatus (projektstatus_desc) values ('Zurückgestellt');
 
 
-/**ZU ÜBERARBEITEN!! */
+
 /**Datensatz für die View: Projekt-->Details-->Status*/
 insert into projekt(idprojekt) values (1);
 insert into projektstatus (idprojektstatus, projektstatus_desc) values (1, 'Eröffnet');
