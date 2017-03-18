@@ -15,20 +15,14 @@ insert into projektstatus (projektstatus_desc) values ('Abgelehnt');
 insert into projektstatus (projektstatus_desc) values ('Zurückgestellt');
 
 
-/**folgende Datensätze können unabhängig von den Standardwerten verwendet werden*/
+/**Testdaten*/
 /**Datensatz für die View: Projekt_Overview*/
 /**Datensatz für die View: Projekt_Team*/
 /**Datensatz für die View: Projekt_Stakeholder*/
 
 insert into projekt(idprojekt) values (1);
 
-insert into projektstatus (projektstatus_desc) values ('Eröffnet');
-
 insert into projektdetails(projekt_title, projekt_desc, idprojektstatus, idprojekt) values ('Testprojekt', 'Test des Projekts', 1, 1);
-
-insert into rollen(rolle_desc) values ('Projektleiter');
-insert into rollen(rolle_desc) values ('Projektmitarbeiter');
-insert into rollen(rolle_desc) values ('Auftraggeber');
 
 insert into person(name, vorname, strasse, strassen_nr, wohnort, wohnort_plz, idfunktion, idabteilung) values ('Köhli', 'Patrick', 'Westiweg', 69, 'Westihaus', 6666, 'Produktmanager', 'Produktmanagement');
 insert into person(name, vorname, strasse, strassen_nr, wohnort, wohnort_plz, idfunktion, idabteilung) values ('Kilchhofer', 'Marino', 'Vechiweg', 13, 'Vechigen', 3333, 'Bieper', 'Biepmanagement');
