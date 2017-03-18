@@ -147,4 +147,4 @@ ON stak.idperson = pers.idperson
 ;
 
 /** Fügt die Default Status hinzu */
-insert into projektstatus (idprojektstatus, projektstatus_desc) values (0, 'Statusbeschrieb');
+/**insert into projektstatus (idprojektstatus, projektstatus_desc) values (0, 'Statusbeschrieb');*/
