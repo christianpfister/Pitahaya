@@ -126,6 +126,7 @@ ON tm.idperson= pers.idperson
 JOIN rollen rol
 ON tm.idrolle = rol.idrolle
 ;
+
 CREATE VIEW projekt_stakeholder AS
 SELECT
 pro.idprojekt

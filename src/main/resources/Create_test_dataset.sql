@@ -15,23 +15,34 @@ insert into projektstatus (projektstatus_desc) values ('Abgelehnt');
 insert into projektstatus (projektstatus_desc) values ('Zurückgestellt');
 
 
+/**folgende Datensätze können unabhängig von den Standardwerten verwendet werden*/
+/**Datensatz für die View: Projekt_Overview*/
+/**Datensatz für die View: Projekt_Team*/
+/**Datensatz für die View: Projekt_Stakeholder*/
 
-/**Datensatz für die View: Projekt-->Details-->Status*/
 insert into projekt(idprojekt) values (1);
-insert into projektstatus (idprojektstatus, projektstatus_desc) values (1, 'Eröffnet');
-insert into projektdetails(idprojektdetails, projekt_title, projekt_desc, idprojektstatus, idprojekt) values (1, 'Testprojekt', 'Test des Projekts', 1, 1);
 
-/**Datensatz für die View: Projekt-->Team-->Person--->Rolle*/
-insert into rollen(idrolle, rolle_desc) values (1, 'Projektleiter');
-insert into rollen(idrolle, rolle_desc) values (2, 'Projektmitarbeiter');
-insert into projektteam(idprojektteam, idperson, idrolle, idprojekt) values (1, 1, 1, 1);
+insert into projektstatus (projektstatus_desc) values ('Eröffnet');
+
+insert into projektdetails(projekt_title, projekt_desc, idprojektstatus, idprojekt) values ('Testprojekt', 'Test des Projekts', 1, 1);
+
+insert into rollen(rolle_desc) values ('Projektleiter');
+insert into rollen(rolle_desc) values ('Projektmitarbeiter');
+insert into rollen(rolle_desc) values ('Auftraggeber');
+
+insert into person(name, vorname, strasse, strassen_nr, wohnort, wohnort_plz, idfunktion, idabteilung) values ('Köhli', 'Patrick', 'Westiweg', 69, 'Westihaus', 6666, 'Produktmanager', 'Produktmanagement');
+insert into person(name, vorname, strasse, strassen_nr, wohnort, wohnort_plz, idfunktion, idabteilung) values ('Kilchhofer', 'Marino', 'Vechiweg', 13, 'Vechigen', 3333, 'Bieper', 'Biepmanagement');
+insert into person (name, vorname, strasse, strassen_nr, wohnort, wohnort_plz, idfunktion, idabteilung) values ('Chief', 'Inspector', 'Überwacherweg', 10, 'Aufpass', 5555, 'Vizepräsident', 'Geschäftsleitung');
+insert into person (name, vorname, strasse, strassen_nr, wohnort, wohnort_plz, idfunktion, idabteilung) values ('Der', 'Pate', 'Scheffweg', 1, 'Ganzoben', 1111, 'Präsident', 'Geschäftsleitung');
+
+insert into projektteam(idperson, idrolle, idprojekt) values (1, 1, 1);
 insert into projektteam(idprojektteam, idperson, idrolle, idprojekt) values (1, 2, 2, 1);
-insert into person(idperson, name, vorname, strasse, strassen_nr, wohnort, wohnort_plz, idfunktion, idabteilung) values (1,'Köhli', 'Patrick', 'Westiweg', 69, 'Westihaus', 6666, 'Produktmanager', 'Produktmanagement');
-insert into person(idperson, name, vorname, strasse, strassen_nr, wohnort, wohnort_plz, idfunktion, idabteilung) values (2,'Kilchhofer', 'Marino', 'Vechiweg', 13, 'Vechigen', 3333, 'Bieper', 'Biepmanagement');
 
-/**Datensatz für die View: Projekt-->Stakeholder--->Person--->Rolle*/
-insert into rollen (idrolle, rolle_desc) values (3, 'Auftraggeber');
-insert into stakeholder(idstakeholder, idprojekt, idperson, idrolle) values (1, 1, 3, 3);
-insert into person (idperson, name, vorname, strasse, strassen_nr, wohnort, wohnort_plz, idfunktion, idabteilung) values (3, 'Chief', 'Inspector', 'Überwacherweg', 10, 'Aufpass', 5555, 'Vizepräsident', 'Geschäftsleitung');
+insert into stakeholder(idprojekt, idperson, idrolle) values (1, 3, 3);
+insert into stakeholder(idprojekt, idperson, idrolle) values (1, 4, 3);
+
+
+
+
 
 
