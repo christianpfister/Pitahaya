@@ -149,3 +149,18 @@ ON stak.idperson = pers.idperson
 
 /** Fügt die Default Status hinzu */
 /**insert into projektstatus (idprojektstatus, projektstatus_desc) values (0, 'Statusbeschrieb');*/
+/** Standardwerte für die Tabelle Rollen*/
+/*insert into rollen (rolle_desc) values ('Projektleiter');
+insert into rollen (rolle_desc) values ('Projektmitarbeiter');
+insert into rollen (rolle_desc) values ('Auftraggeber');
+insert into rollen (rolle_desc) values ('Product Owner');
+insert into rollen (rolle_desc) values ('Produktmanager');
+
+/** Standardwerte für die Tabelle Projektstatus*/
+insert into projektstatus (projektstatus_desc) values ('Eröffnet');
+insert into projektstatus (projektstatus_desc) values ('In Freigabe');
+insert into projektstatus (projektstatus_desc) values ('Freigegeben');
+insert into projektstatus (projektstatus_desc) values ('In Bearbeitung');
+insert into projektstatus (projektstatus_desc) values ('Abgeschlossen');
+insert into projektstatus (projektstatus_desc) values ('Abgelehnt');
+insert into projektstatus (projektstatus_desc) values ('Zurückgestellt');**/
