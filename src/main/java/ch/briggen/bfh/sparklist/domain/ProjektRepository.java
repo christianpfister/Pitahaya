@@ -95,11 +95,12 @@ public class ProjektRepository {
 		//Projektedetails in DB schreiben
 		try(Connection conn = getConnection())
 		{
-			PreparedStatement stmt = conn.prepareStatement("insert into projektdetails (Projekt_TITLE,Projekt_DESC,idProjektstatus,idProjekt) values (?,?,?,?)");
+			PreparedStatement stmt = conn.prepareStatement("insert into projektdetails (Projekt_TITLE,Projektleiter,Projekt_DESC,idProjektstatus,idProjekt) values (?,?,?,?)");
 			stmt.setString(1, i.getProjekt_TITLE());
-			stmt.setString(2, i.getProjekt_DESC());
-			stmt.setInt(3, status);
-			stmt.setInt(4, id);
+			stmt.setString(2, i.getIdProjektleiter());
+			stmt.setString(3, i.getProjekt_DESC());
+			stmt.setInt(4, status);
+			stmt.setInt(5, id);
 			stmt.executeUpdate();
 		}
 		catch(SQLException e)
@@ -140,7 +141,7 @@ public class ProjektRepository {
 		LinkedList<Projekt> list = new LinkedList<Projekt>();
 		while(rs.next())
 		{
-			Projekt i = new Projekt(rs.getInt("idProjekt"),rs.getInt("idProjektdetails"),rs.getInt("idProjektstatus"),rs.getString("Projekt_Title"),rs.getString("Projekt_DESC"),rs.getString("Projektstatus_DESC"));			
+			Projekt i = new Projekt(rs.getInt("idProjekt"),rs.getString("idProjektleiter"),rs.getInt("idProjektdetails"),rs.getInt("idProjektstatus"),rs.getString("Projekt_Title"),rs.getString("Projekt_DESC"),rs.getString("Projektstatus_DESC"));			
 			list.add(i);
 		}
 		return list;

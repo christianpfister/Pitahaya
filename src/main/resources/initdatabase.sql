@@ -95,6 +95,7 @@ pro.idprojekt
 ,det.projekt_desc
 ,det.idprojektstatus
 ,stat.projektstatus_desc
+,det.idprojektleiter
 FROM
 projekt pro
 

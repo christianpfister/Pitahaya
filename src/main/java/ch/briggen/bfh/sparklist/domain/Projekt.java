@@ -2,6 +2,7 @@ package ch.briggen.bfh.sparklist.domain;
 
 public class Projekt {
 	private int idProjekt;
+	private String idProjektleiter;
 	private int idProjektdetails;
 	private int idProjektstatus;
 	private String Projekt_TITLE;
@@ -23,10 +24,11 @@ public class Projekt {
 	 * @param quantity Menge
 	 */
 
-	public Projekt(int idProjekt, int idProjektdetails, int idProjektstatus, String projekt_TITLE, String projekt_DESC,
+	public Projekt(int idProjekt, String idProjektleiter, int idProjektdetails, int idProjektstatus, String projekt_TITLE, String projekt_DESC,
 			String projektstatus_DESC) {
 		super();
 		this.idProjekt = idProjekt;
+		this.idProjektleiter = idProjektleiter;
 		this.idProjektdetails = idProjektdetails;
 		this.idProjektstatus = idProjektstatus;
 		this.Projekt_TITLE = projekt_TITLE;
@@ -47,6 +49,14 @@ public class Projekt {
 		this.idProjekt = idProjekt;
 	}
 
+	public String getIdProjektleiter() {
+		return idProjektleiter;
+	}
+
+	public void setIdProjektleiter(String idProjektleiter) {
+		this.idProjektleiter = idProjektleiter;
+	}
+	
 	public int getIdProjektdetails() {
 		return idProjektdetails;
 	}
