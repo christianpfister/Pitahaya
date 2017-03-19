@@ -85,7 +85,6 @@ public class ProjektRepository {
 			log.error(msg, e);
 			throw new RepositoryException(msg);
 		}
-
 		// Projektedetails in DB schreiben
 		try (Connection conn = getConnection()) {
 			PreparedStatement stmt = conn.prepareStatement(
