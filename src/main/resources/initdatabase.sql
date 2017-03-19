@@ -1,4 +1,6 @@
 create table if not exists items (id long identity, name varchar(200), quantity decimal);
+
+
 DROP ALL OBJECTS
 ;
 create table projekt(
@@ -7,6 +9,7 @@ create table projekt(
 	create_TS timestamp default now(),
 )
 ;
+
 
 create table rollen(
 idRolle int primary key auto_increment,
@@ -94,7 +97,6 @@ pro.idprojekt
 ,det.projekt_desc
 ,det.idprojektstatus
 ,stat.projektstatus_desc
-,rol.idrolle
 FROM
 projekt pro
 
@@ -113,6 +115,7 @@ pro.idprojekt
 ,tm.idprojektteam
 ,pers.*
 ,rol.rolle_desc
+
 FROM
 projekt pro
 
@@ -147,9 +150,9 @@ ON stak.idperson = pers.idperson
 ;
 
 /** Fügt die Default Status hinzu */
-/**insert into projektstatus (idprojektstatus, projektstatus_desc) values (0, 'Statusbeschrieb');*/
+
 /** Standardwerte für die Tabelle Rollen*/
-/*insert into rollen (rolle_desc) values ('Projektleiter');
+insert into rollen (rolle_desc) values ('Projektleiter');
 insert into rollen (rolle_desc) values ('Projektmitarbeiter');
 insert into rollen (rolle_desc) values ('Auftraggeber');
 insert into rollen (rolle_desc) values ('Product Owner');
@@ -162,4 +165,5 @@ insert into projektstatus (projektstatus_desc) values ('Freigegeben');
 insert into projektstatus (projektstatus_desc) values ('In Bearbeitung');
 insert into projektstatus (projektstatus_desc) values ('Abgeschlossen');
 insert into projektstatus (projektstatus_desc) values ('Abgelehnt');
-insert into projektstatus (projektstatus_desc) values ('Zurückgestellt');**/
+insert into projektstatus (projektstatus_desc) values ('Zurückgestellt');
+
