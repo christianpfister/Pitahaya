@@ -8,7 +8,6 @@ create table projekt(
 )
 ;
 
-
 create table rollen(
 idRolle int primary key auto_increment,
 Rolle_Desc Varchar(45) not null,
@@ -95,7 +94,7 @@ pro.idprojekt
 ,det.projekt_desc
 ,det.idprojektstatus
 ,stat.projektstatus_desc
-,det.idprojektleiter
+,rol.idrolle
 FROM
 projekt pro
 
@@ -114,7 +113,6 @@ pro.idprojekt
 ,tm.idprojektteam
 ,pers.*
 ,rol.rolle_desc
-
 FROM
 projekt pro
 

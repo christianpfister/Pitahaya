@@ -2,7 +2,7 @@ package ch.briggen.bfh.sparklist.domain;
 
 public class Projekt {
 	private int idProjekt;
-	private String idProjektleiter;
+	private int idRolle;
 	private int idProjektdetails;
 	private int idProjektstatus;
 	private String Projekt_TITLE;
@@ -24,19 +24,19 @@ public class Projekt {
 	 * @param quantity Menge
 	 */
 
-	public Projekt(int idProjekt, String idProjektleiter, int idProjektdetails, int idProjektstatus, String projekt_TITLE, String projekt_DESC,
-			String projektstatus_DESC) {
+	public Projekt(int idProjekt, int idProjektdetails, int idProjektstatus, String projekt_TITLE, String projekt_DESC,
+			String projektstatus_DESC, int idRolle) {
 		super();
 		this.idProjekt = idProjekt;
-		this.idProjektleiter = idProjektleiter;
 		this.idProjektdetails = idProjektdetails;
 		this.idProjektstatus = idProjektstatus;
 		this.Projekt_TITLE = projekt_TITLE;
 		this.Projekt_DESC = projekt_DESC;
 		this.Projektstatus_DESC = projektstatus_DESC;
+		this.idRolle = idRolle;
 	}
 
-	public Projekt(String Projekt_TTITLE, String Projekt_DESC, String Projektstatus_DESC) {
+	public Projekt(String Projekt_TTITLE, String Projekt_DESC, String Projektstatus_DESC, String Projekt_TITLE) {
 		this.Projekt_TITLE = Projekt_TITLE;
 		this.Projekt_DESC = Projekt_DESC;
 	}
@@ -48,13 +48,13 @@ public class Projekt {
 	public void setIdProjekt(int idProjekt) {
 		this.idProjekt = idProjekt;
 	}
-
-	public String getIdProjektleiter() {
-		return idProjektleiter;
+	
+	public int getIdRolle(){
+		return idRolle;
 	}
-
-	public void setIdProjektleiter(String idProjektleiter) {
-		this.idProjektleiter = idProjektleiter;
+	
+	public void setIdRolle(int idRolle){
+		this.idRolle = idRolle;
 	}
 	
 	public int getIdProjektdetails() {

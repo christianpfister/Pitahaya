@@ -18,7 +18,7 @@ class ProjektWebHelper {
 	 */
 	public static Projekt projektFromWeb(Request request)
 	{
-		return new Projekt("projektDetail.Projekt_TITLE","projektDetail.Projekt_DESC","projektDetail.Projektstatus_DESC");
+		return new Projekt("projektDetail.Projekt_TITLE","projektDetail.Projekt_DESC","projektDetail.Projektstatus_DESC", null);
 	}
 
 }
