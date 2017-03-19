@@ -1,4 +1,6 @@
 create table if not exists items (id long identity, name varchar(200), quantity decimal);
+
+
 DROP ALL OBJECTS
 ;
 create table projekt(
@@ -147,4 +149,5 @@ ON stak.idperson = pers.idperson
 ;
 
 /** Fügt die Default Status hinzu */
-insert into projektstatus (idprojektstatus, projektstatus_desc) values (0, 'Statusbeschrieb');
+insert into projektstatus (idprojektstatus, projektstatus_desc) values (0, 'Statusbeschrieb')
+;

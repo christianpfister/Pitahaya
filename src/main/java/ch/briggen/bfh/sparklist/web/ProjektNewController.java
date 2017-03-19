@@ -40,7 +40,7 @@ public class ProjektNewController implements Route{
 	 * Erstellt ein neues Item in der DB. Die id wird von der Datenbank erstellt.
 	 * Bei Erfolg wird wieder nachm dem Auto Refresh der Projektoverview, dass neue Projekt angezeigt
 	 * 
-	 * Hört auf POST /item/new
+	 * Hört auf POST /newprojekt
 	 * 
 	 * @return ProjektOverview
 	 */	
@@ -49,13 +49,13 @@ public class ProjektNewController implements Route{
 		
 		Gson gson = new Gson();
 		
-		log.trace("POST /item/new mit projektNew " + request.body());
+		log.trace("POST /projektnen mit Projekt " + request.body());
 		
+		//Mappt das Json auf ein Projekt
 		Projekt projektNew = gson.fromJson(request.body(), Projekt.class);
 
-		
 		//insert gibt die von der DB erstellte id zurück.
-		projektRepo.insertTest(projektNew);
+		projektRepo.insert(projektNew);
 
 		return projektRepo.getAll();
 	}

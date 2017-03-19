@@ -1,9 +1,9 @@
 package ch.briggen.bfh.sparklist.domain;
 
 public class Projekt {
-	private int idProjekt;
-	private int idProjektdetails;
-	private int idProjektstatus;
+	private Integer idProjekt;
+	private Integer idProjektdetails;
+	private Integer idProjektstatus;
 	private String Projekt_TITLE;
 	private String Projekt_DESC;
 	private String Projektstatus_DESC;
@@ -34,7 +34,7 @@ public class Projekt {
 		this.Projektstatus_DESC = projektstatus_DESC;
 	}
 
-	public Projekt(String Projekt_TTITLE, String Projekt_DESC, String Projektstatus_DESC) {
+	public Projekt(int Projekt_TTITLE, String Projekt_DESC, String Projektstatus_DESC) {
 		this.Projekt_TITLE = Projekt_TITLE;
 		this.Projekt_DESC = Projekt_DESC;
 	}
