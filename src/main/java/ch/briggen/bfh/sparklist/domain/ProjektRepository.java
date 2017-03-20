@@ -5,6 +5,7 @@ import static ch.briggen.bfh.sparklist.domain.JdbcRepositoryHelper.getConnection
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -34,7 +35,8 @@ public class ProjektRepository {
 		try (Connection conn = getConnection()) {
 			PreparedStatement stmt = conn.prepareStatement("select * from projekt_overview");
 			ResultSet rs = stmt.executeQuery();
-			log.trace("Projektleiter:" + rs.getString("Name"));
+			ResultSetMetaData rsmd = rs.getMetaData();
+			log.trace("Spaltenname: " + rsmd.getColumnName(9));
 			return mapProjekt(rs);
 		} catch (SQLException e) {
 			String msg = "SQL error while retreiving all items. ";
@@ -144,12 +146,17 @@ public class ProjektRepository {
 	 * @throws SQLException
 	 */
 	private static Collection<Projekt> mapProjekt(ResultSet rs) throws SQLException {
+		
+		final Logger log = LoggerFactory.getLogger(ItemRepository.class);
+		
+		log.trace("Map Objekte");
+		
 		LinkedList<Projekt> list = new LinkedList<Projekt>();
 		while (rs.next()) {
 			Projekt i = new Projekt(rs.getInt("idProjekt"), rs.getInt("idProjektdetails"), rs.getInt("idProjektstatus"),
-					rs.getString("Projekt_Title"), rs.getString("Projekt_DESC"), rs.getString("Projektstatus_DESC"), rs.getString("Name"), rs.getString("Vorname"), rs.getString("Rolle_Desc"));
+					rs.getString("Projekt_Title"), rs.getString("Projekt_DESC"), rs.getString("Projektstatus_DESC"), rs.getString("Name"), rs.getString("Vorname"), rs.getInt("IDROLLE"),rs.getInt("IDPERSON"));
 			list.add(i);
-			System.out.println(rs.getString("Name") + rs.getString("Vorname"));
+			log.trace("Projektleiter" + rs.getString("NAME"));
 		}
 		return list;
 	}
