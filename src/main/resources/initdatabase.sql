@@ -97,6 +97,10 @@ pro.idprojekt
 ,det.projekt_desc
 ,det.idprojektstatus
 ,stat.projektstatus_desc
+,tm.idperson
+,tm.idrolle
+,pers.name
+,pers.vorname
 FROM
 projekt pro
 
@@ -106,6 +110,16 @@ ON pro.idprojekt = det.idprojekt
 JOIN projektstatus stat
 ON det.idprojektstatus = stat.idprojektstatus
 
+JOIN projektteam tm
+ON pro.idprojekt = tm.idprojekt
+
+JOIN person pers
+ON tm.idperson = pers.idperson
+
+JOIN rollen rol
+ON tm.idRolle = rol.idRolle
+AND rol.Rolle_Desc = 'Projektleiter'
+
 WHERE
 	pro.projekt_active = true
 ;
@@ -113,7 +127,9 @@ CREATE VIEW projekt_team AS
 SELECT
 pro.idprojekt
 ,tm.idprojektteam
-,pers.*
+,tm.idPerson
+,pers.Vorname
+,pers.Name
 ,rol.rolle_desc
 
 FROM
@@ -123,7 +139,7 @@ JOIN projektteam tm
 ON pro.idprojekt = tm.idprojekt
 
 JOIN person pers
-ON tm.idperson= pers.idperson
+ON tm.idperson = pers.idperson
 
 JOIN rollen rol
 ON tm.idrolle = rol.idrolle
