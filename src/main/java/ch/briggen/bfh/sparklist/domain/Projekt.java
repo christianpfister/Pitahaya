@@ -8,11 +8,23 @@ public class Projekt {
 	private String Projekt_TITLE;
 	private String Projekt_DESC;
 	private String Projektstatus_DESC;
+	private String Name;
+	private String Vorname;
+	private String Rolle_Desc;
 	
 	/**
 	 * Defaultkonstruktor für die Verwendung in einem Controller
+	 * @param string6 
+	 * @param string5 
+	 * @param string4 
+	 * @param string3 
+	 * @param string2 
+	 * @param string 
+	 * @param k 
+	 * @param j 
+	 * @param i 
 	 */
-	public Projekt()
+	public Projekt(int i, int j, int k, String string, String string2, String string3, String string4, String string5, String string6)
 	{
 	
 	}

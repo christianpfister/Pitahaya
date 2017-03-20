@@ -146,7 +146,7 @@ public class ProjektRepository {
 		LinkedList<Projekt> list = new LinkedList<Projekt>();
 		while (rs.next()) {
 			Projekt i = new Projekt(rs.getInt("idProjekt"), rs.getInt("idProjektdetails"), rs.getInt("idProjektstatus"),
-					rs.getString("Projekt_Title"), rs.getString("Projekt_DESC"), rs.getString("Projektstatus_DESC"));
+					rs.getString("Projekt_Title"), rs.getString("Projekt_DESC"), rs.getString("Projektstatus_DESC"), rs.getString("Name"), rs.getString("Vorname"), rs.getString("Rolle_Desc"));
 			list.add(i);
 		}
 		return list;
