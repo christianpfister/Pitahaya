@@ -33,12 +33,21 @@
       }
       .row.content {height:auto;} 
     }
-    
+
 .sortorder:after {
   content: '\25bc';   // BLACK UP-POINTING TRIANGLE
 }
 .sortorder.reverse:after {
   content: '\25b2';   // BLACK DOWN-POINTING TRIANGLE
 } 
+
+ .affix {
+      top: 0;
+      width: 100%;
+  }
+
+  .affix + .container-fluid {
+      padding-top: 70px;
+  }
     
 </style>

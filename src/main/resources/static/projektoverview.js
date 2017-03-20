@@ -50,7 +50,9 @@ app.controller('projektoverview', function($scope, $http, $interval) {
 	         
 	            var dataObj = {        
 	                              Projekt_TITLE : $scope.Projekt_TITLE,
-	                              Projekt_DESC : $scope.Projekt_DESC,                                
+	                              Projekt_DESC : $scope.Projekt_DESC,
+	                              name: $scope.Nachname,
+	                              vorname: $scope.Vorname,
 	            };      
 
 	            var res = $http.post('/newprojekt', dataObj);
@@ -69,6 +71,8 @@ app.controller('projektoverview', function($scope, $http, $interval) {
 	            // Making the fields empty         
 	            $scope.Projekt_TITLE='';
 	            $scope.Projekt_DESC='';
+	            $scope.Nachname='';
+	            $scope.Vorname='';
 	    };
 
 	    
