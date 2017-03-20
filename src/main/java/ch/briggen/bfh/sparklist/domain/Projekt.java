@@ -35,34 +35,45 @@ public class Projekt {
 		this.idRolle = idRolle;
 		this.idPerson = idPerson;
 	}
-
-	public Projekt(int Projekt_TTITLE, String Projekt_DESC, String Projektstatus_DESC) {
+	
+	public Projekt(int idProjekt, int idProjektdetails, int idProjektstatus, String projekt_TITLE, String projekt_DESC,
+			String projektstatus_DESC, String name, String vorname) {
+		super();
+		this.idProjekt = idProjekt;
+		this.idProjektdetails = idProjektdetails;
+		this.idProjektstatus = idProjektstatus;
 		this.projekt_TITLE = projekt_TITLE;
-		this.projektstatus_DESC = Projekt_DESC;
+		this.projekt_DESC = projekt_DESC;
+		this.projektstatus_DESC = projektstatus_DESC;
+		this.name = name;
+		this.vorname = vorname;
+	}
+	
+	public Projekt(){
+		
 	}
 
-	public int getIdProjekt() {
+	public Integer getIdProjekt() {
 		return idProjekt;
 	}
 
-	public void setIdProjekt(int idProjekt) {
+	public void setIdProjekt(Integer idProjekt) {
 		this.idProjekt = idProjekt;
 	}
 
-	
-	public int getIdProjektdetails() {
+	public Integer getIdProjektdetails() {
 		return idProjektdetails;
 	}
 
-	public void setIdProjektdetails(int idProjektdetails) {
+	public void setIdProjektdetails(Integer idProjektdetails) {
 		this.idProjektdetails = idProjektdetails;
 	}
 
-	public int getIdProjektstatus() {
+	public Integer getIdProjektstatus() {
 		return idProjektstatus;
 	}
 
-	public void setIdProjektstatus(int idProjektstatus) {
+	public void setIdProjektstatus(Integer idProjektstatus) {
 		this.idProjektstatus = idProjektstatus;
 	}
 
@@ -71,15 +82,15 @@ public class Projekt {
 	}
 
 	public void setProjekt_TITLE(String projekt_TITLE) {
-		projekt_TITLE = projekt_TITLE;
+		this.projekt_TITLE = projekt_TITLE;
 	}
 
 	public String getProjekt_DESC() {
-		return projektstatus_DESC;
+		return projekt_DESC;
 	}
 
 	public void setProjekt_DESC(String projekt_DESC) {
-		projektstatus_DESC = projekt_DESC;
+		this.projekt_DESC = projekt_DESC;
 	}
 
 	public String getProjektstatus_DESC() {
@@ -87,6 +98,46 @@ public class Projekt {
 	}
 
 	public void setProjektstatus_DESC(String projektstatus_DESC) {
-		projektstatus_DESC = projektstatus_DESC;
+		this.projektstatus_DESC = projektstatus_DESC;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getVorname() {
+		return vorname;
+	}
+
+	public void setVorname(String vorname) {
+		this.vorname = vorname;
+	}
+
+	public String getRolle_Desc() {
+		return rolle_Desc;
+	}
+
+	public void setRolle_Desc(String rolle_Desc) {
+		this.rolle_Desc = rolle_Desc;
+	}
+
+	public Integer getIdPerson() {
+		return idPerson;
+	}
+
+	public void setIdPerson(Integer idPerson) {
+		this.idPerson = idPerson;
+	}
+
+	public Integer getIdRolle() {
+		return idRolle;
+	}
+
+	public void setIdRolle(Integer idRolle) {
+		this.idRolle = idRolle;
 	}
 }

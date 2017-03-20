@@ -53,6 +53,8 @@ public class ProjektNewController implements Route{
 		
 		//Mappt das Json auf ein Projekt
 		Projekt projektNew = gson.fromJson(request.body(), Projekt.class);
+		
+		log.trace("Projekt ID:" + projektNew.getProjekt_TITLE());
 
 		//insert gibt die von der DB erstellte id zurück.
 		projektRepo.insert(projektNew);

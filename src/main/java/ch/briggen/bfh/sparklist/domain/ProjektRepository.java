@@ -73,7 +73,9 @@ public class ProjektRepository {
 	public void insert(Projekt i) {
 		log.trace("insert" + i.toString());
 		Integer id = 0;
+		Integer idPers = 0;
 		Integer status = 1;
+		Integer idRol = 0;
 
 		// Projekt mit TS in DB schreiben
 		try (Connection conn = getConnection()) {
@@ -88,6 +90,9 @@ public class ProjektRepository {
 			log.error(msg, e);
 			throw new RepositoryException(msg);
 		}
+		
+
+		
 		// Projektedetails in DB schreiben
 		try (Connection conn = getConnection()) {
 			PreparedStatement stmt = conn.prepareStatement(
@@ -103,21 +108,53 @@ public class ProjektRepository {
 			log.error(msg, e);
 			throw new RepositoryException(msg);
 		}
-		// Projektleiter in DB schreiben
-		//try (Connection conn = getConnection()){
-		//	PreparedStatement stmt = conn.prepareStatement(
-		//			"insert into projektteam (idPerson, idRolle, Name, Vorname) values (?,?,?,?)");
-		//	stmt.setInt(1, );
-		//	stmt.set(2, );
-		//	stmt.set(3, Name);
-		//	stmt.set(4, Vorname);
-		//	stmt.executeUpdate();
+		
+		//Person in DB schreiben
+		try (Connection conn = getConnection()){
+			PreparedStatement stmt = conn.prepareStatement(
+					"insert into person (Name, Vorname) values (?,?)");
+			stmt.setString(1, i.getName() );
+			stmt.setString(2, i.getVorname() );
+			stmt.executeUpdate();
+			ResultSet key = stmt.getGeneratedKeys();
+			key.next();
+			idPers = key.getInt(1);
+			log.trace("Neuer Schlüssel " + idPers.toString());
+		} catch (SQLException e) {
+			String msg = "SQL error while updating item " + i;
+			log.error(msg, e);
+			throw new RepositoryException(msg);	
+		}
+		
+		//ID der Rolle Projektleiter ermitteln
+		/**
+		try (Connection conn = getConnection()) {
+			PreparedStatement stmt = conn.prepareStatement("select * from rollen where Rolle_DESC = ?");
+			stmt.setString(1, "Projektleiter");
+			ResultSet rs = stmt.executeQuery();
+			idRol = rs.getInt("IDROLLE");
+			log.trace("PL Id = " + idRol);
+		} catch (SQLException e) {
+			String msg = "SQL error while retreiving all items. ";
+			log.error(msg, e);
+			throw new RepositoryException(msg);
+		}
+		*/
+		
+		// Projektleiter in Projektteam schreiben
+		try (Connection conn = getConnection()){
+			PreparedStatement stmt = conn.prepareStatement(
+					"insert into projektteam (idPerson, idRolle, idProjekt) values (?,?,?)");
+			stmt.setInt(1, idPers);
+			stmt.setInt(2, 1);
+			stmt.setInt(3, id);
+			stmt.executeUpdate();
 			
-		//} catch (SQLException e) {
-		//	String msg = "SQL error while updating item " + i;
-		//	log.error(msg, e);
-		//	throw new RepositoryException(msg);	
-		//}
+		} catch (SQLException e) {
+			String msg = "SQL error while updating item " + i;
+			log.error(msg, e);
+			throw new RepositoryException(msg);	
+		}
 	}
 
 	public void deleteProjekt(Projekt i) {
