@@ -20,11 +20,11 @@ import com.google.gson.JsonElement;
 
 /**
  * WWW-Controller
- * Liefert unter "/" die ganze Liste
+ * Liefert unter "/projektoverview" die ganze Projekt Liste
  * 
  * !!! Diese Version verfügt bewusst über keine Validierung / Fehlerbehandlung !!!
  * 
- * @author M. Briggen
+ * @author Marino Kilchhofer
  *
  */
 public class ProjektManagementRootController implements Route {
