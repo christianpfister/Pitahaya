@@ -1,12 +1,12 @@
 var app = angular.module('myproj', ["ngRoute"]);
 
+//Navigation - Befüllung der ng-view
 app.config(function($routeProvider) {
 	  $routeProvider
 	  .when("/", {
 	    templateUrl : "projektoverview.html",
 		controller : "projektoverview"
 
-		
 	  })
 	  .when("/red", {
 	    template : "<h1>bullshit<h1>"
@@ -18,6 +18,7 @@ app.config(function($routeProvider) {
 	    templateUrl : ""
 	  });
 	});
+
 
 //Projektübersicht Controller
 app.controller('projektoverview', function($scope, $http, $interval) {
@@ -39,14 +40,13 @@ app.controller('projektoverview', function($scope, $http, $interval) {
 	   			$scope.projects = response.data;
 	   		});
    		};
-   
+   		
+   		//Sortierung der Projektoverview Liste
    		$scope.sortBy = function (propertyName) {
 	   		$scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
 	   		$scope.propertyName = propertyName;
    		};
    		
-   
-
    		// Writing New Projekt to Spark
 	  	$scope.addnewproject = function(){             
 	         
@@ -57,14 +57,12 @@ app.controller('projektoverview', function($scope, $http, $interval) {
 	                              vorname: $scope.Vorname,
 	            };      
 	            
+	            //Überprüfung der Eingaben auf Vollständigkeit
 	            if($scope.Projekt_TITLE == null || $scope.Projekt_DESC== null || $scope.Nachname==null || $scope.Vorname==null){
 	            	$scope.message="Fehlerhafte eingabe!";
 	            }
 	            else{
 	            	
-	            
-	            	
-
 	            var res = $http.post('/newprojekt', dataObj);
 
 	            res.success(function(data, status, headers, config) {
@@ -78,7 +76,7 @@ app.controller('projektoverview', function($scope, $http, $interval) {
 	                     alert( "failure message: " + JSON.stringify({data: data}));
 	            });             
 
-	            // Making the fields empty         
+	            // Making the fields empty and reset form         
 	            $scope.Projekt_TITLE=null;
 	            $scope.Projekt_DESC=null;
 	            $scope.Nachname=null;

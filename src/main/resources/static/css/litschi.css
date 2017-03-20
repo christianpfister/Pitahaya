@@ -16,8 +16,6 @@
       height: 100%;
     }
     
- 
-    
     /* Set black background color, white text and some padding */
     footer {
       background-color: #555;
@@ -33,21 +31,23 @@
       }
       .row.content {height:auto;} 
     }
+ 
 
-.sortorder:after {
-  content: '\25bc';   // BLACK UP-POINTING TRIANGLE
-}
-.sortorder.reverse:after {
-  content: '\25b2';   // BLACK DOWN-POINTING TRIANGLE
-} 
+ 	.affix {
+     	 top: 0;
+     	 width: 100%;
+  	}
 
- .affix {
-      top: 0;
-      width: 100%;
-  }
-
-  .affix + .container-fluid {
+  	.affix + .container-fluid {
       padding-top: 70px;
-  }
-    
+ 	}
+
+	/* Pfeile nach Sortierung
+	.sortorder:after {
+  		content: '\25bc';   // UP-POINTING TRIANGLE
+	}
+	.sortorder.reverse:after {
+  		content: '\25b2';   // DOWN-POINTING TRIANGLE
+	} 
+
 </style>
