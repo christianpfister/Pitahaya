@@ -9,8 +9,11 @@
     <div>
    <p></p>
    <hr>
-   <h3>neues Projekt erstellen:</h3>
-  
+   <h3><span data-ng-click="showneuprojekt=true">neues Projekt erstellen <i class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></i></span></h3>
+   
+   <div data-ng-show="showneuprojekt">
+   <hr>
+  <h4>Projektdetails</h4>
  
   <form name="projektneu" class="form-horizontal" data-ng-submit="addnewproject()">
  
@@ -48,12 +51,12 @@
     
     <div class="form-group">        
       <div class="col-sm-offset-3 col-sm-8">
-        <button type="submit" class="btn btn-default" data-ng-click="myFunc()">speichern <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
+        <button type="submit"  formNoValidate class="btn btn-default">speichern <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
       </div>
     </div>
     
   </form>
-
+</div>
      
   			
       

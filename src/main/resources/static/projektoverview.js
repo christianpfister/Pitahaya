@@ -49,11 +49,14 @@ app.controller('projektoverview', function($scope, $http, $interval) {
 	  	$scope.addnewproject = function(){             
 	         
 	            var dataObj = {        
-	                              Projekt_TITLE : $scope.Projekt_TITLE,
-	                              Projekt_DESC : $scope.Projekt_DESC,
+	                              projekt_TITLE : $scope.Projekt_TITLE,
+	                              projekt_DESC : $scope.Projekt_DESC,
 	                              name: $scope.Nachname,
 	                              vorname: $scope.Vorname,
 	            };      
+	            
+	          
+	            	
 
 	            var res = $http.post('/newprojekt', dataObj);
 
@@ -73,6 +76,11 @@ app.controller('projektoverview', function($scope, $http, $interval) {
 	            $scope.Projekt_DESC='';
 	            $scope.Nachname='';
 	            $scope.Vorname='';
+	            $scope.projektneu.$setPristine();
+	            $scope.projektneu.$setUntouched();
+	           
+	            $scope.projektneu.$submitted = false;
+	            $scope.showneuprojekt = false;
 	    };
 
 	    
