@@ -70,7 +70,7 @@ public class ProjektRepository {
 	public void insert(Projekt i) {
 		log.trace("insert" + i.toString());
 		Integer id = 0;
-		Integer status = 0;
+		Integer status = 1;
 
 		// Projekt mit TS in DB schreiben
 		try (Connection conn = getConnection()) {
