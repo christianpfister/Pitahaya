@@ -169,17 +169,18 @@ ON stak.idperson = pers.idperson
 
 /** Standardwerte fÃ¼r die Tabelle Rollen*/
 insert into rollen (rolle_desc) values ('Projektleiter');
+insert into rollen (rolle_desc) values ('Antragssteller');
 insert into rollen (rolle_desc) values ('Projektmitarbeiter');
 insert into rollen (rolle_desc) values ('Auftraggeber');
 insert into rollen (rolle_desc) values ('Product Owner');
 insert into rollen (rolle_desc) values ('Produktmanager');
 
 /** Standardwerte fÃ¼r die Tabelle Projektstatus*/
-insert into projektstatus (projektstatus_desc) values ('Eröffnet');
+insert into projektstatus (projektstatus_desc) values ('Erï¿½ffnet');
 insert into projektstatus (projektstatus_desc) values ('In Freigabe');
 insert into projektstatus (projektstatus_desc) values ('Freigegeben');
 insert into projektstatus (projektstatus_desc) values ('In Bearbeitung');
 insert into projektstatus (projektstatus_desc) values ('Abgeschlossen');
 insert into projektstatus (projektstatus_desc) values ('Abgelehnt');
-insert into projektstatus (projektstatus_desc) values ('Zurückgestellt');
+insert into projektstatus (projektstatus_desc) values ('Zurï¿½ckgestellt');
 
