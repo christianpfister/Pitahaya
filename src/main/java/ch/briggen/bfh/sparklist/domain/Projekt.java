@@ -5,7 +5,6 @@ public class Projekt {
 	private Integer idProjekt;
 	private Integer idProjektdetails;
 	private Integer idProjektstatus;
-	private String idProjektleiter;
 	private String Projekt_TITLE;
 	private String Projekt_DESC;
 	private String Projektstatus_DESC;

@@ -100,7 +100,21 @@ public class ProjektRepository {
 			log.error(msg, e);
 			throw new RepositoryException(msg);
 		}
-
+		// Projektleiter in DB schreiben
+		//try (Connection conn = getConnection()){
+		//	PreparedStatement stmt = conn.prepareStatement(
+		//			"insert into projektteam (idPerson, idRolle, Name, Vorname) values (?,?,?,?)");
+		//	stmt.setInt(1, );
+		//	stmt.set(2, );
+		//	stmt.set(3, Name);
+		//	stmt.set(4, Vorname);
+		//	stmt.executeUpdate();
+			
+		//} catch (SQLException e) {
+		//	String msg = "SQL error while updating item " + i;
+		//	log.error(msg, e);
+		//	throw new RepositoryException(msg);	
+		//}
 	}
 
 	public void deleteProjekt(Projekt i) {
