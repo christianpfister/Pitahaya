@@ -7,27 +7,27 @@ create table projekt(
 	idProjekt int primary key auto_increment,
 	projekt_active boolean default true not null,
 	create_TS timestamp default now(),
-)
+)DEFAULT CHARSET=utf8
 ;
 
 
 create table rollen(
 idRolle int primary key auto_increment,
 Rolle_Desc Varchar(45) not null,
-)
+)DEFAULT CHARSET=utf8
 ;
 
 create table Projektstatus(
 idProjektstatus int primary key auto_increment,
 Projektstatus_DESC varchar(45) not null,
-)
+)DEFAULT CHARSET=utf8
 ;
 
 create table TerminArt(
 idTerminArt int primary key auto_increment,
 Termin_Title varchar(45) not null,
 Termin_DESC varchar(45),
-)
+)DEFAULT CHARSET=utf8
 ;
 
 create table Person(
@@ -40,7 +40,7 @@ Wohnort varchar(45) not null,
 Wohnort_PLZ int not null,
 idFunktion varchar(45) not null,
 idAbteilung varchar(45),
-)
+)DEFAULT CHARSET=utf8
 ;
 
 create table stakeholder(
@@ -51,7 +51,7 @@ create table stakeholder(
 	Foreign key (idProjekt) references projekt (idProjekt) on delete set null,
 	Foreign key(idPerson) references person (idPerson) on delete set null,
 	Foreign key(idRolle) references rollen (idRolle) on delete set null
-)
+)DEFAULT CHARSET=utf8
 ;
 
 create table projektteam(
@@ -63,7 +63,7 @@ Foreign key (idProjekt) references projekt (idProjekt)
 on delete set null,
 Foreign key (idRolle) references rollen (idRolle)
 on delete set null
-)
+)DEFAULT CHARSET=utf8
 ;
 create table projektdetails(
 idProjektdetails int primary key auto_increment,
@@ -75,7 +75,7 @@ Foreign key (idProjekt) references projekt (idProjekt)
 on delete set null,
 Foreign key (idProjektstatus) references projektstatus (idProjektstatus)
 on delete set null,
-)
+)DEFAULT CHARSET=utf8
 ;
 create table termine(
 idTermine int primary key auto_increment,
@@ -87,7 +87,7 @@ Foreign key (idProjekt) references projekt (idProjekt)
 on delete set null,
 Foreign key (idTerminArt) references terminart (idTerminArt)
 on delete set null,
-)
+)DEFAULT CHARSET=utf8
 ;
 CREATE VIEW projekt_overview AS
 SELECT
