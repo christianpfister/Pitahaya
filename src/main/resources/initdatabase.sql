@@ -34,11 +34,11 @@ create table Person(
 idPerson int primary key auto_increment,
 Name varchar(45) not null,
 Vorname varchar(45) not null,
-Strasse varchar(45) not null,
-Strassen_Nr int not null,
-Wohnort varchar(45) not null,
-Wohnort_PLZ int not null,
-idFunktion varchar(45) not null,
+Strasse varchar(45),
+Strassen_Nr int,
+Wohnort varchar(45),
+Wohnort_PLZ int,
+idFunktion varchar(45),
 idAbteilung varchar(45),
 )DEFAULT CHARSET=utf8
 ;

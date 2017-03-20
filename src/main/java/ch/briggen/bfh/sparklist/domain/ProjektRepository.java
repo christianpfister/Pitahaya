@@ -34,6 +34,7 @@ public class ProjektRepository {
 		try (Connection conn = getConnection()) {
 			PreparedStatement stmt = conn.prepareStatement("select * from projekt_overview");
 			ResultSet rs = stmt.executeQuery();
+			log.trace("Projektleiter:" + rs.getString("Name"));
 			return mapProjekt(rs);
 		} catch (SQLException e) {
 			String msg = "SQL error while retreiving all items. ";
@@ -148,6 +149,7 @@ public class ProjektRepository {
 			Projekt i = new Projekt(rs.getInt("idProjekt"), rs.getInt("idProjektdetails"), rs.getInt("idProjektstatus"),
 					rs.getString("Projekt_Title"), rs.getString("Projekt_DESC"), rs.getString("Projektstatus_DESC"));
 			list.add(i);
+			System.out.println(rs.getString("Name") + rs.getString("Vorname"));
 		}
 		return list;
 	}
