@@ -52,6 +52,7 @@
     <div class="form-group">        
       <div class="col-sm-offset-3 col-sm-8">
         <button type="submit"  formNoValidate class="btn btn-default">speichern <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
+      {{message}}
       </div>
     </div>
     
@@ -85,15 +86,16 @@
 		       <span class="sortorder" data-ng-show="propertyName === 'idProjekt'" data-ng-class="{reverse: reverse}"></span>
 		      </th>
 		      <th>
-		        <span data-ng-click="sortBy('Projekt_TITLE')">Projekttitel </span>
-		        <span class="sortorder" data-ng-show="propertyName === 'Projekt_TITLE'" data-ng-class="{reverse: reverse}"></span>
+		        <span data-ng-click="sortBy('projekt_TITLE')">Projekttitel </span>
+		        <span class="sortorder" data-ng-show="propertyName === 'projekt_TITLE'" data-ng-class="{reverse: reverse}"></span>
 		      </th>
 		      <th>
-		        <span data-ng-click="sortBy('Projekt_DESC')">Projektbeschreibung </span>
-		        <span class="sortorder" data-ng-show="propertyName === 'Projekt_DESC'" data-ng-class="{reverse: reverse}"></span>
+		        <span data-ng-click="sortBy('projekt_DESC')">Projektbeschreibung </span>
+		        <span class="sortorder" data-ng-show="propertyName === 'projekt_DESC'" data-ng-class="{reverse: reverse}"></span>
 		      </th>
 		      <th>
-		      Status
+		       <span data-ng-click="sortBy('projektstatus_DESC')">Status </span>
+		        <span class="sortorder" data-ng-show="propertyName === 'projektstatus_DESC'" data-ng-class="{reverse: reverse}"></span>
 		      </th>
 		      <th>
 		      Projektleiter

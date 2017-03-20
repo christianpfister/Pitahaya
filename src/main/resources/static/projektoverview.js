@@ -44,6 +44,8 @@ app.controller('projektoverview', function($scope, $http, $interval) {
 	   		$scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
 	   		$scope.propertyName = propertyName;
    		};
+   		
+   
 
    		// Writing New Projekt to Spark
 	  	$scope.addnewproject = function(){             
@@ -55,7 +57,12 @@ app.controller('projektoverview', function($scope, $http, $interval) {
 	                              vorname: $scope.Vorname,
 	            };      
 	            
-	          
+	            if($scope.Projekt_TITLE == null || $scope.Projekt_DESC== null || $scope.Nachname==null || $scope.Vorname==null){
+	            	$scope.message="Fehlerhafte eingabe!";
+	            }
+	            else{
+	            	
+	            
 	            	
 
 	            var res = $http.post('/newprojekt', dataObj);
@@ -72,15 +79,17 @@ app.controller('projektoverview', function($scope, $http, $interval) {
 	            });             
 
 	            // Making the fields empty         
-	            $scope.Projekt_TITLE='';
-	            $scope.Projekt_DESC='';
-	            $scope.Nachname='';
-	            $scope.Vorname='';
+	            $scope.Projekt_TITLE=null;
+	            $scope.Projekt_DESC=null;
+	            $scope.Nachname=null;
+	            $scope.Vorname=null;
 	            $scope.projektneu.$setPristine();
 	            $scope.projektneu.$setUntouched();
 	           
 	            $scope.projektneu.$submitted = false;
 	            $scope.showneuprojekt = false;
+	            
+	            }
 	    };
 
 	    
