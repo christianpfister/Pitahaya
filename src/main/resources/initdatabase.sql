@@ -168,8 +168,8 @@ ON stak.idperson = pers.idperson
 /** Fügt die Default Status hinzu */
 
 /** Standardwerte für die Tabelle Rollen*/
-insert into rollen (rolle_desc) values ('Projektleiter');
 insert into rollen (rolle_desc) values ('Antragssteller');
+insert into rollen (rolle_desc) values ('Projektleiter');
 insert into rollen (rolle_desc) values ('Projektmitarbeiter');
 insert into rollen (rolle_desc) values ('Auftraggeber');
 insert into rollen (rolle_desc) values ('Product Owner');
