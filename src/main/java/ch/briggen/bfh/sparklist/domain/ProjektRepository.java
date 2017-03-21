@@ -125,13 +125,28 @@ public class ProjektRepository {
 			log.error(msg, e);
 			throw new RepositoryException(msg);	
 		}
-				
+
+		
+		//ID der Rolle Projektleiter ermitteln
+		/**
+		try (Connection conn = getConnection()) {
+			PreparedStatement stmt = conn.prepareStatement("select * from rollen where Rolle_DESC = ?");
+			stmt.setString(1, "Antragssteller");
+			ResultSet rs = stmt.executeQuery();
+			idRol = rs.getInt("IDROLLE");
+		} catch (SQLException e) {
+			String msg = "SQL error while retreiving all items. ";
+			log.error(msg, e);
+			throw new RepositoryException(msg);
+		}
+		*/
+
 		// Projektleiter in Projektteam schreiben
 		try (Connection conn = getConnection()){
 			PreparedStatement stmt = conn.prepareStatement(
 					"insert into projektteam (idPerson, idRolle, idProjekt) values (?,?,?)");
 			stmt.setInt(1, idPers);
-			stmt.setInt(2, 1);
+			stmt.setInt(2, idRol);
 			stmt.setInt(3, id);
 			stmt.executeUpdate();
 			
@@ -178,7 +193,6 @@ public class ProjektRepository {
 			Projekt i = new Projekt(rs.getInt("idProjekt"), rs.getInt("idProjektdetails"), rs.getInt("idProjektstatus"),
 					rs.getString("Projekt_Title"), rs.getString("Projekt_DESC"), rs.getString("Projektstatus_DESC"), rs.getString("Name"), rs.getString("Vorname"), rs.getInt("IDROLLE"),rs.getInt("IDPERSON"));
 			list.add(i);
-			log.trace("Projektleiter" + rs.getString("NAME"));
 		}
 		return list;
 	}

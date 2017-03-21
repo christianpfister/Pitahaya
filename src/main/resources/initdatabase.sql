@@ -118,7 +118,7 @@ ON tm.idperson = pers.idperson
 
 JOIN rollen rol
 ON tm.idRolle = rol.idRolle
-AND rol.Rolle_Desc = 'Projektleiter'
+AND rol.Rolle_Desc = 'Antragssteller'
 
 WHERE
 	pro.projekt_active = true
@@ -183,4 +183,5 @@ insert into projektstatus (projektstatus_desc) values ('In Bearbeitung');
 insert into projektstatus (projektstatus_desc) values ('Abgeschlossen');
 insert into projektstatus (projektstatus_desc) values ('Abgelehnt');
 insert into projektstatus (projektstatus_desc) values ('Zurückgestellt');
+
 
