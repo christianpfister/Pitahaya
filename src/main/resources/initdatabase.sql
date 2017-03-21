@@ -184,4 +184,8 @@ insert into projektstatus (projektstatus_desc) values ('Abgeschlossen');
 insert into projektstatus (projektstatus_desc) values ('Abgelehnt');
 insert into projektstatus (projektstatus_desc) values ('Zurückgestellt');
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://gitlab.com/GRP-TOSEFS17-LITSCHI/PRJ-TOSEFS17-LITSCHI.git
 
