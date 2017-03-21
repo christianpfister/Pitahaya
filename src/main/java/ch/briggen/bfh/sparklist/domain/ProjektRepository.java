@@ -67,7 +67,7 @@ public class ProjektRepository {
 
 	/**
 	 * Insert Projekt Fügt ein Projekt in der DB hinzu.
-	 * 
+	 * @params idRol setzt die ID für die Rolle Projektleiter
 	 * @status setzt den Status eines neuen Projekts per Default auf 0
 	 */
 	public void insert(Projekt i) {
@@ -125,6 +125,7 @@ public class ProjektRepository {
 			log.error(msg, e);
 			throw new RepositoryException(msg);	
 		}
+<<<<<<< HEAD
 		
 		//ID der Rolle Projektleiter ermitteln
 		/**
@@ -140,6 +141,9 @@ public class ProjektRepository {
 		}
 		*/
 		
+=======
+				
+>>>>>>> branch 'master' of https://gitlab.com/GRP-TOSEFS17-LITSCHI/PRJ-TOSEFS17-LITSCHI.git
 		// Projektleiter in Projektteam schreiben
 		try (Connection conn = getConnection()){
 			PreparedStatement stmt = conn.prepareStatement(
