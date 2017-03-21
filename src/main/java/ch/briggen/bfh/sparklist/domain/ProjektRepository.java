@@ -75,7 +75,7 @@ public class ProjektRepository {
 		Integer id = 0;
 		Integer idPers = 0;
 		Integer status = 1;
-		Integer idRol = 0;
+		Integer idRol = 1;
 
 		// Projekt mit TS in DB schreiben
 		try (Connection conn = getConnection()) {
@@ -130,10 +130,9 @@ public class ProjektRepository {
 		/**
 		try (Connection conn = getConnection()) {
 			PreparedStatement stmt = conn.prepareStatement("select * from rollen where Rolle_DESC = ?");
-			stmt.setString(1, "Projektleiter");
+			stmt.setString(1, "Antragssteller");
 			ResultSet rs = stmt.executeQuery();
 			idRol = rs.getInt("IDROLLE");
-			log.trace("PL Id = " + idRol);
 		} catch (SQLException e) {
 			String msg = "SQL error while retreiving all items. ";
 			log.error(msg, e);
@@ -146,7 +145,7 @@ public class ProjektRepository {
 			PreparedStatement stmt = conn.prepareStatement(
 					"insert into projektteam (idPerson, idRolle, idProjekt) values (?,?,?)");
 			stmt.setInt(1, idPers);
-			stmt.setInt(2, 1);
+			stmt.setInt(2, idRol);
 			stmt.setInt(3, id);
 			stmt.executeUpdate();
 			
@@ -193,7 +192,6 @@ public class ProjektRepository {
 			Projekt i = new Projekt(rs.getInt("idProjekt"), rs.getInt("idProjektdetails"), rs.getInt("idProjektstatus"),
 					rs.getString("Projekt_Title"), rs.getString("Projekt_DESC"), rs.getString("Projektstatus_DESC"), rs.getString("Name"), rs.getString("Vorname"), rs.getInt("IDROLLE"),rs.getInt("IDPERSON"));
 			list.add(i);
-			log.trace("Projektleiter" + rs.getString("NAME"));
 		}
 		return list;
 	}

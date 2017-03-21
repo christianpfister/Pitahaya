@@ -118,7 +118,7 @@ ON tm.idperson = pers.idperson
 
 JOIN rollen rol
 ON tm.idRolle = rol.idRolle
-AND rol.Rolle_Desc = 'Projektleiter'
+AND rol.Rolle_Desc = 'Antragssteller'
 
 WHERE
 	pro.projekt_active = true
@@ -176,11 +176,11 @@ insert into rollen (rolle_desc) values ('Product Owner');
 insert into rollen (rolle_desc) values ('Produktmanager');
 
 /** Standardwerte für die Tabelle Projektstatus*/
-insert into projektstatus (projektstatus_desc) values ('Er�ffnet');
+insert into projektstatus (projektstatus_desc) values ('Eröffnet');
 insert into projektstatus (projektstatus_desc) values ('In Freigabe');
 insert into projektstatus (projektstatus_desc) values ('Freigegeben');
 insert into projektstatus (projektstatus_desc) values ('In Bearbeitung');
 insert into projektstatus (projektstatus_desc) values ('Abgeschlossen');
 insert into projektstatus (projektstatus_desc) values ('Abgelehnt');
-insert into projektstatus (projektstatus_desc) values ('Zur�ckgestellt');
+insert into projektstatus (projektstatus_desc) values ('Zurückgestellt');
 
