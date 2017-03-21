@@ -18,10 +18,26 @@
     
     /* Set black background color, white text and some padding */
     footer {
-      background-color: #555;
+      background-color: white;
       color: white;
       padding: 15px;
     }
+    
+    .floating-box {
+    float: left;
+    width: 100px;
+    height: auto;
+    margin: 0px;
+    border:  5px black;
+}
+
+
+.floating-box-right {
+    float: right;
+    width: auto;
+    height: auto;
+    margin: 0px; 
+}
     
     /* On small screens, set height to 'auto' for sidenav and grid */
     @media screen and (max-width: 767px) {
@@ -42,7 +58,7 @@
       padding-top: 70px;
  	}
 
-	/* Pfeile nach Sortierung
+
 	.sortorder:after {
   		content: '\25bc';   // UP-POINTING TRIANGLE
 	}
