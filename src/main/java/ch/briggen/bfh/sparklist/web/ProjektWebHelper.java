@@ -16,9 +16,9 @@ class ProjektWebHelper {
 	 * Wandelt den Request in ein Projekt um
 	 * @param request enthält ein Projekt Objekt
 	 */
-	public static Projekt projektFromWeb(Request request)
+	public static void projektFromWeb(Request request)
 	{
-		return new Projekt("projektDetail.Projekt_TITLE","projektDetail.Projekt_DESC","projektDetail.Projektstatus_DESC", null);
+		//return new Projekt("projektDetail.Projekt_TITLE","projektDetail.Projekt_DESC","projektDetail.Projektstatus_DESC", null);
 	}
 
 }

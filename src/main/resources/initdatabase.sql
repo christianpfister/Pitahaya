@@ -168,6 +168,7 @@ ON stak.idperson = pers.idperson
 /** Fügt die Default Status hinzu */
 
 /** Standardwerte für die Tabelle Rollen*/
+insert into rollen (rolle_desc) values ('Antragssteller');
 insert into rollen (rolle_desc) values ('Projektleiter');
 insert into rollen (rolle_desc) values ('Projektmitarbeiter');
 insert into rollen (rolle_desc) values ('Auftraggeber');
@@ -175,11 +176,19 @@ insert into rollen (rolle_desc) values ('Product Owner');
 insert into rollen (rolle_desc) values ('Produktmanager');
 
 /** Standardwerte für die Tabelle Projektstatus*/
+<<<<<<< HEAD
 insert into projektstatus (projektstatus_desc) values ('Eröffnet');
+=======
+insert into projektstatus (projektstatus_desc) values ('Er�ffnet');
+>>>>>>> branch 'master' of https://gitlab.com/GRP-TOSEFS17-LITSCHI/PRJ-TOSEFS17-LITSCHI.git
 insert into projektstatus (projektstatus_desc) values ('In Freigabe');
 insert into projektstatus (projektstatus_desc) values ('Freigegeben');
 insert into projektstatus (projektstatus_desc) values ('In Bearbeitung');
 insert into projektstatus (projektstatus_desc) values ('Abgeschlossen');
 insert into projektstatus (projektstatus_desc) values ('Abgelehnt');
+<<<<<<< HEAD
 insert into projektstatus (projektstatus_desc) values ('Zurückgestellt');
+=======
+insert into projektstatus (projektstatus_desc) values ('Zur�ckgestellt');
+>>>>>>> branch 'master' of https://gitlab.com/GRP-TOSEFS17-LITSCHI/PRJ-TOSEFS17-LITSCHI.git
 
