@@ -67,7 +67,7 @@ public class ProjektRepository {
 
 	/**
 	 * Insert Projekt Fügt ein Projekt in der DB hinzu.
-	 * 
+	 * @params idRol setzt die ID für die Rolle Projektleiter
 	 * @status setzt den Status eines neuen Projekts per Default auf 0
 	 */
 	public void insert(Projekt i) {
@@ -75,7 +75,7 @@ public class ProjektRepository {
 		Integer id = 0;
 		Integer idPers = 0;
 		Integer status = 1;
-		Integer idRol = 0;
+		Integer idRol = 1;
 
 		// Projekt mit TS in DB schreiben
 		try (Connection conn = getConnection()) {
@@ -125,22 +125,7 @@ public class ProjektRepository {
 			log.error(msg, e);
 			throw new RepositoryException(msg);	
 		}
-		
-		//ID der Rolle Projektleiter ermitteln
-		/**
-		try (Connection conn = getConnection()) {
-			PreparedStatement stmt = conn.prepareStatement("select * from rollen where Rolle_DESC = ?");
-			stmt.setString(1, "Projektleiter");
-			ResultSet rs = stmt.executeQuery();
-			idRol = rs.getInt("IDROLLE");
-			log.trace("PL Id = " + idRol);
-		} catch (SQLException e) {
-			String msg = "SQL error while retreiving all items. ";
-			log.error(msg, e);
-			throw new RepositoryException(msg);
-		}
-		*/
-		
+				
 		// Projektleiter in Projektteam schreiben
 		try (Connection conn = getConnection()){
 			PreparedStatement stmt = conn.prepareStatement(
